@@ -1,25 +1,34 @@
 import { createGlobalStyle } from 'styled-components';
 
+const darkTheme = {
+  textColor: '#ffffff',
+  surfaceColor: '#000000',
+};
+
+const lightTheme = {
+  textColor: '#000000',
+  surfaceColor: '#ffffff',
+};
 export default createGlobalStyle`
 :root {
-  --surface: white;
-  --text: black;
+  --surface: ${lightTheme.surfaceColor};
+  --text: ${lightTheme.textColor};
 }
 
 body.switch-color-scheme {
-  --surface: black;
-  --text: white;
+  --surface: ${darkTheme.surfaceColor};
+  --text: ${darkTheme.textColor};
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface: black;
-    --text: white;
+    --surface: ${darkTheme.surfaceColor};
+    --text: ${darkTheme.textColor};
   }
 
   body.switch-color-scheme {
-    --surface: white;
-    --text: black;
+    --surface: ${lightTheme.surfaceColor};
+    --text: ${lightTheme.textColor};
   }
 }
 

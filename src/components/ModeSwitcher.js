@@ -1,19 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSavedMode } from '../hooks/useSavedMode';
+import Icon from './Icon';
 
 export default function () {
-  const [mode, switchColorTheme] = useSavedMode();
+  const [theme, switchColorTheme] = useSavedMode();
+
   return (
     <SliderContainer>
+      <Icon type="wb_sunny" />
       <label>
         <input
           type="checkbox"
-          defaultChecked={mode === 'dark'}
-          onClick={({ target }) => switchColorTheme(target)}
+          checked={theme === 'dark'}
+          onClick={({ target }) => {
+            switchColorTheme();
+          }}
         />
         <div className="slider round"></div>
       </label>
+      <Icon type="bedtime" />
     </SliderContainer>
   );
 }
@@ -21,6 +27,11 @@ export default function () {
 const SliderContainer = styled.div`
   display: flex;
   align-items: center;
+
+  span {
+    font-size: 32px;
+    padding: 0 8px;
+  }
 
   label {
     display: inline-block;
