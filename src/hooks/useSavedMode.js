@@ -1,22 +1,27 @@
 import { useEffect, useState } from 'react';
 
-export default function useSavedMode() {
-  const [currentMode, setCurrentMode] = useState(false);
-  const toggleMode = document.querySelector('input[type="checkbox"]');
+export function useSavedMode() {
+  const [mode, setMode] = useState(localStorage.getItem('mode') || 'light');
 
   useEffect(() => {
     const savedMode = localStorage.getItem('mode');
-    setCurrentMode(savedMode);
-  }, []);
+    localStorage.setItem('mode', mode);
+    savedMode && setMode(savedMode);
+  }, [mode]);
 
-  useEffect(() => {
-    localStorage.setItem('mode', currentMode);
-  }, [currentMode]);
-
-  if (currentMode === 'dark') {
-    toggleMode.checked = true;
+  if (mode === 'dark') {
     document.body.classList.add('switch-color-scheme');
   }
 
-  return [currentMode, setCurrentMode];
+  function switchColorTheme(input) {
+    if (document.body.classList.toggle('switch-color-scheme')) {
+      input.checked = true;
+      localStorage.setItem('mode', 'dark');
+    } else {
+      input.checked = false;
+      localStorage.setItem('mode', 'light');
+    }
+  }
+
+  return [mode, switchColorTheme];
 }

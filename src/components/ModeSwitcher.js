@@ -1,37 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSavedMode } from '../hooks/useSavedMode';
 
 export default function () {
+  const [mode, switchColorTheme] = useSavedMode();
   return (
     <SliderContainer>
       <label>
         <input
           type="checkbox"
+          defaultChecked={mode === 'dark'}
           onClick={({ target }) => switchColorTheme(target)}
-          checked={loadSavedMode()}
         />
         <div className="slider round"></div>
       </label>
     </SliderContainer>
   );
-}
-
-function switchColorTheme(input) {
-  if (document.body.classList.toggle('switch-color-scheme')) {
-    input.checked = true;
-    localStorage.setItem('mode', 'dark');
-  } else {
-    input.checked = false;
-    localStorage.setItem('mode', 'light');
-  }
-}
-
-function loadSavedMode() {
-  const savedMode = localStorage.getItem('mode');
-
-  if (savedMode === 'dark') {
-    document.body.classList.add('switch-color-scheme');
-  }
 }
 
 const SliderContainer = styled.div`
@@ -59,7 +43,7 @@ const SliderContainer = styled.div`
   }
 
   .slider {
-    background-color: #003366;
+    background-color: #000000;
     bottom: 0%;
     cursor: pointer;
     left: 0;
