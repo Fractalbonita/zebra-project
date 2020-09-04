@@ -1,27 +1,23 @@
 import { useEffect, useState } from 'react';
 
 export function useSavedMode() {
-  const [mode, setMode] = useState(localStorage.getItem('mode') || 'light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
   useEffect(() => {
-    const savedMode = localStorage.getItem('mode');
-    localStorage.setItem('mode', mode);
-    savedMode && setMode(savedMode);
-  }, [mode]);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
-  if (mode === 'dark') {
+  if (theme === 'dark') {
     document.body.classList.add('switch-color-scheme');
   }
 
-  function switchColorTheme(input) {
+  function switchColorTheme() {
     if (document.body.classList.toggle('switch-color-scheme')) {
-      input.checked = true;
-      localStorage.setItem('mode', 'dark');
+      setTheme('dark');
     } else {
-      input.checked = false;
-      localStorage.setItem('mode', 'light');
+      setTheme('light');
     }
   }
 
-  return [mode, switchColorTheme];
+  return [theme, switchColorTheme];
 }
