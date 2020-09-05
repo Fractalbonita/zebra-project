@@ -43,5 +43,6 @@ body {
   height: 100vh;
   margin: 0 auto;
   padding: 20px;
+  transition: all .5s;
 }
 `;
