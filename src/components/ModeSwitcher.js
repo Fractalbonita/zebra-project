@@ -13,9 +13,7 @@ export default function () {
         <input
           type="checkbox"
           checked={theme === 'dark'}
-          onClick={({ target }) => {
-            switchColorTheme();
-          }}
+          onChange={switchColorTheme}
         />
         <div className="slider round"></div>
       </label>
@@ -41,7 +39,9 @@ const SliderContainer = styled.div`
   }
 
   input {
-    display: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
 
   input:checked + .slider {
@@ -61,7 +61,7 @@ const SliderContainer = styled.div`
     position: absolute;
     right: 0;
     top: 0;
-    transition: 0.5s;
+    transition: all 0.5s;
   }
 
   .slider:before {
@@ -71,8 +71,16 @@ const SliderContainer = styled.div`
     height: 32px;
     left: 4px;
     position: absolute;
-    transition: 0.5s;
+    transition: all 0.5s;
     width: 32px;
+  }
+
+  input:focus + .slider:before {
+    background-color: rosybrown;
+  }
+
+  input:checked:focus + .slider:before {
+    background-color: palegreen;
   }
 
   .slider.round {
