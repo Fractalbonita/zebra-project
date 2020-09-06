@@ -1,6 +1,5 @@
 import React from 'react';
 import { fireEvent, render, cleanup } from '@testing-library/react';
-import { unmountComponentAtNode } from 'react-dom';
 import ModeSwitcher from './ModeSwitcher';
 
 describe('ModeSwitcher', () => {
