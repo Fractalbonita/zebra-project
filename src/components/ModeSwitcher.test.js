@@ -1,5 +1,6 @@
 import React from 'react';
 import { fireEvent, render, cleanup } from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
 import ModeSwitcher from './ModeSwitcher';
 
 describe('ModeSwitcher', () => {
@@ -20,8 +21,12 @@ describe('ModeSwitcher', () => {
   });
 
   test('renders ModeSwitcher', () => {
+    const getItem = spyOn(window.localStorage, 'getItem');
+    const setItem = spyOn(window.localStorage, 'setItem');
     const renderedModeSwitcher = render(<ModeSwitcher />);
     expect(renderedModeSwitcher).toBeTruthy();
+    expect(getItem).toHaveBeenCalledTimes(1);
+    expect(setItem).toHaveBeenCalledWith('theme', 'light');
   });
 
   test('renders icon of type wb_sunny', () => {
@@ -34,13 +39,17 @@ describe('ModeSwitcher', () => {
     expect(getByText('bedtime')).toBeInTheDocument();
   });
 
-  test('renders the input of type checked', () => {
+  test('changes the checkbox and calls the localStorage on click ', () => {
+    const setItem = spyOn(window.localStorage, 'setItem');
     const { container } = render(<ModeSwitcher />);
     const checkbox = container.querySelector('input');
+    expect(setItem).toHaveBeenCalledWith('theme', 'light');
     fireEvent.click(checkbox, { target: { checked: true } });
     expect(checkbox.checked).toEqual(true);
+    expect(setItem).toHaveBeenCalledWith('theme', 'dark');
     fireEvent.click(checkbox, { target: { checked: false } });
     expect(checkbox.checked).toEqual(false);
+    expect(setItem).toHaveBeenCalledWith('theme', 'light');
   });
 
   test('adds the specified class to the body when activated', () => {
