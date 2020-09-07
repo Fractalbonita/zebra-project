@@ -9,6 +9,7 @@ const lightTheme = {
   textColor: '#000000',
   surfaceColor: '#ffffff',
 };
+
 export default createGlobalStyle`
 :root {
   --surface: ${lightTheme.surfaceColor};
