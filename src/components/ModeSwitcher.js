@@ -8,7 +8,7 @@ export default function () {
 
   return (
     <SliderContainer>
-      <Icon type="wb_sunny" />
+      <Icon icon="wb_sunny" />
       <label>
         <input
           type="checkbox"
@@ -17,7 +17,7 @@ export default function () {
         />
         <div className="slider round"></div>
       </label>
-      <Icon type="bedtime" />
+      <Icon icon="bedtime" />
     </SliderContainer>
   );
 }

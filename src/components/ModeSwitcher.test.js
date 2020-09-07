@@ -28,12 +28,12 @@ describe('ModeSwitcher', () => {
     expect(setItem).toHaveBeenCalledWith('theme', 'light');
   });
 
-  test('renders icon of type wb_sunny', () => {
+  test('renders icon of icon type wb_sunny', () => {
     const { getByText } = render(<ModeSwitcher />);
     expect(getByText('wb_sunny')).toBeInTheDocument();
   });
 
-  test('renders icon of type bedtime', () => {
+  test('renders icon of icon type bedtime', () => {
     const { getByText } = render(<ModeSwitcher />);
     expect(getByText('bedtime')).toBeInTheDocument();
   });
