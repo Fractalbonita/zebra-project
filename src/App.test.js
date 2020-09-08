@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 import ModeSwitcher from './components/ModeSwitcher';
+import ReminderList from './components/ReminderList';
+import ReminderForm from './components/ReminderForm';
 
 describe('App', () => {
   test('renders app', () => {
@@ -31,7 +33,29 @@ describe('App', () => {
   });
 
   test('renders the ModeSwitcher component', () => {
-    const component = render(<ModeSwitcher />);
+    const component = render(
+      <App>
+        <ModeSwitcher />
+      </App>
+    );
+    expect(component).toBeTruthy;
+  });
+
+  test('renders the ReminderList component', () => {
+    const component = render(
+      <App>
+        <ReminderList />
+      </App>
+    );
+    expect(component).toBeTruthy;
+  });
+
+  test('renders the ReminderForm component', () => {
+    const component = render(
+      <App>
+        <ReminderForm />
+      </App>
+    );
     expect(component).toBeTruthy;
   });
 });
