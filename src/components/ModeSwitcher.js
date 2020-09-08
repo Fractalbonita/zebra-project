@@ -76,11 +76,11 @@ const SliderContainer = styled.div`
   }
 
   input:focus + .slider:before {
-    background-color: rosybrown;
+    background-color: var(--primary);
   }
 
-  input:checked:focus + .slider:before {
-    background-color: palegreen;
+  input:hover + .slider:before {
+    background-color: var(--primary);
   }
 
   .slider.round {
