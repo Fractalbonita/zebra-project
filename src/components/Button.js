@@ -12,15 +12,15 @@ import Icon from './Icon';
 export default function Button({
   background,
   border,
-  case,
   font,
   fontSize,
+  height,
   icon,
   iconSize,
   name,
   onClick,
   radius,
-  size,
+  textTransform,
   title,
   type,
 }) {
@@ -33,12 +33,37 @@ export default function Button({
 }
 
 const StyledButton = styled.button`
-  background-color: ${(props) => props.background || '#000000'};
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  background-color: ${(props) => props.background || 'var(--text)'};
   border: ${(props) => props.border || 'none'};
-  border-radius: ${(props) => props.radius || '25%'};
-  color: ${(props) => props.background || '#ffffff'};
+  border-radius: ${(props) => props.radius || '0'};
+  color: ${(props) => props.background || 'var(--surface)'};
   font-family: ${(props) => props.font || 'Halvetica'};
-  font-size: ${(props) => props.fontSize || '14px'};
-  text-transform: ${(props) => props.case || 'none'};
-  width: ${(props) => props.size || '44px'};
+  font-size: ${(props) => props.fontSize || '16px'};
+  height: ${(props) => props.height || '36px'};
+  text-transform: ${(props) => props.textTransform || 'none'};
+  padding: 0 16px;
+
+  &:hover {
+    background-color: ${(props) => props.background || 'var(--primary)'};
+    color: ${(props) => props.background || 'var(--surface)'};
+  }
+
+  &:focus {
+    background-color: ${(props) => props.background || 'var(--primary)'};
+    color: ${(props) => props.background || 'var(--surface)'};
+  }
+
+  &:active {
+    background-color: ${(props) => props.background || 'lightgrey'};
+    color: ${(props) => props.background || 'var(--surface)'};
+    animation: gradient 0.2s;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: bolder;
+  }
 `;
