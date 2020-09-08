@@ -2,16 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from './Icon';
 
-// TextButton
-// OutlinedButton
-// ContainedButton
-// FloatingActionButton FAB
-
-// enabled, disabled, focused, pressed, hover
-
-export default function Button({
+export default function ({
   background,
   border,
+  disabled,
   font,
   fontSize,
   height,
@@ -25,18 +19,18 @@ export default function Button({
   type,
 }) {
   return (
-    <StyledButton type={type} name={name} onClick={onClick}>
+    <Button disabled={disabled} type={type} name={name} onClick={onClick}>
       <Icon icon={icon} />
       {title}
-    </StyledButton>
+    </Button>
   );
 }
 
-const StyledButton = styled.button`
+const Button = styled.button`
   align-items: center;
-  display: flex;
   cursor: pointer;
-  background-color: ${(props) => props.background || 'var(--text)'};
+  display: flex;
+  background-color: ${(props) => props.background || 'var(--primary)'};
   border: ${(props) => props.border || 'none'};
   border-radius: ${(props) => props.radius || '0'};
   color: ${(props) => props.background || 'var(--surface)'};
@@ -45,6 +39,15 @@ const StyledButton = styled.button`
   height: ${(props) => props.height || '36px'};
   text-transform: ${(props) => props.textTransform || 'none'};
   padding: 0 16px;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${(props) => props.background || 'var(--text)'};
+
+    &:hover {
+      background-color: ${(props) => props.background || 'var(--text)'};
+    }
+  }
 
   &:hover {
     background-color: ${(props) => props.background || 'var(--primary)'};

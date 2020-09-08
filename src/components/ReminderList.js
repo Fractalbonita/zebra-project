@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Reminder from './Reminder';
 
-export default function ReminderList({ reminders }) {
+export default function ({ reminders }) {
   return (
-    <div>
-      <StyledCounter>
+    <>
+      <Counter>
         <span>{reminders.length} </span>
         <span>{reminders.length !== 1 ? 'reminders' : 'reminder'}</span>
-      </StyledCounter>
-      <StyledReminderList>
+      </Counter>
+      <List>
         {reminders &&
           reminders.map((reminder) => (
             <Reminder
@@ -18,12 +18,12 @@ export default function ReminderList({ reminders }) {
               status={reminder.completed}
             />
           ))}
-      </StyledReminderList>
-    </div>
+      </List>
+    </>
   );
 }
 
-const StyledCounter = styled.div`
+const Counter = styled.div`
   margin: 0.5rem 0;
 
   span:first-of-type {
@@ -32,7 +32,7 @@ const StyledCounter = styled.div`
   }
 `;
 
-const StyledReminderList = styled.ul`
+const List = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
