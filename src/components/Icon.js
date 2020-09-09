@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default ({ type, ...props }) => (
+export default ({ icon, ...props }) => (
   <span className="material-icons" {...props}>
-    {type}
+    {icon}
   </span>
 );

@@ -4,24 +4,24 @@ import Icon from './Icon';
 
 describe('Icon', () => {
   test('renders a material icon', () => {
-    const { container } = render(<Icon type="bedtime" />);
+    const { container } = render(<Icon icon="bedtime" />);
     expect(container.innerHTML).toBe(
       '<span class="material-icons">bedtime</span>'
     );
   });
 
-  test('renders an icon of a given type', () => {
-    const { queryByText } = render(<Icon type="bedtime" />);
+  test('renders an icon of a given icon type', () => {
+    const { queryByText } = render(<Icon icon="bedtime" />);
     expect(queryByText('bedtime')).toBeTruthy();
     expect(queryByText('code')).toBeFalsy();
   });
 
-  test('renders props, e.g. calls the onClick callback handler', async () => {
+  test('renders props, e.g. calls the onClick callback handler', () => {
     const clickHandler = jest.fn();
     const { getByText } = render(
-      <Icon type="bedtime" onClick={clickHandler} />
+      <Icon icon="bedtime" onClick={clickHandler} />
     );
-    await fireEvent.click(getByText('bedtime'));
+    fireEvent.click(getByText('bedtime'));
     expect(clickHandler).toHaveBeenCalledTimes(1);
   });
 });
