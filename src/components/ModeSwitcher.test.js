@@ -22,8 +22,7 @@ describe('ModeSwitcher', () => {
   test('renders ModeSwitcher', () => {
     const getItem = spyOn(window.localStorage, 'getItem');
     const setItem = spyOn(window.localStorage, 'setItem');
-    const renderedModeSwitcher = render(<ModeSwitcher />);
-    expect(renderedModeSwitcher).toBeTruthy();
+    render(<ModeSwitcher />);
     expect(getItem).toHaveBeenCalledTimes(1);
     expect(setItem).toHaveBeenCalledWith('theme', 'light');
   });
@@ -38,7 +37,7 @@ describe('ModeSwitcher', () => {
     expect(getByText('bedtime')).toBeInTheDocument();
   });
 
-  test('changes the checkbox and calls the localStorage on click ', () => {
+  test('changes the checkbox status and calls the localStorage on click ', () => {
     const setItem = spyOn(window.localStorage, 'setItem');
     const { container } = render(<ModeSwitcher />);
     const checkbox = container.querySelector('input');
