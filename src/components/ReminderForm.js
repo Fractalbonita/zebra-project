@@ -16,11 +16,11 @@ export default function ({ addReminder }) {
       <label htmlFor="reminder">Add reminder</label>
       <Container>
         <input
-          ide="reminder"
+          id="reminder"
           type="text"
           placeholder="e.g. Foo"
           value={value}
-          pattern=".+"
+          min="1"
           onChange={(event) => setValue(event.target.value)}
         />
         <Button disabled={!value} type="submit" name="add" icon="add"></Button>
