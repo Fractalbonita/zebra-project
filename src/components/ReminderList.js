@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Reminder from './Reminder';
 
-export default function ({ reminders }) {
+export default function ({ reminders, onChange }) {
   return (
     <>
       <Counter>
-        <span>{reminders.length} </span>
-        <span>{reminders.length !== 1 ? 'reminders' : 'reminder'}</span>
+        <span>{reminders.length}</span>
+        <span>{reminders.length !== 1 ? ' reminders' : ' reminder'}</span>
       </Counter>
       <List>
         {reminders &&
@@ -16,6 +16,7 @@ export default function ({ reminders }) {
               key={reminder.id}
               name={reminder}
               status={reminder.completed}
+              onChange={onChange}
             />
           ))}
       </List>
