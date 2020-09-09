@@ -4,8 +4,8 @@ import ReminderList from './ReminderList';
 
 describe('ReminderList', () => {
   test('renders counter of length 1', () => {
-    const length = '1';
     const onChange = jest.fn();
+    const length = '1';
     const reminders = [
       { reminder: 'Foo' + Math.random(), id: '1234', completed: false },
     ];
@@ -55,6 +55,7 @@ describe('ReminderList', () => {
       expect(getByText(item.reminder)).toBeInTheDocument();
       expect(getByText(item.reminder).tagName).toBe('P');
     });
+    expect(reminders).toHaveLength(3);
   });
 
   test('calls checkbox on click', () => {
