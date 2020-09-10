@@ -61,7 +61,14 @@ const SliderContainer = styled.div`
     position: absolute;
     right: 0;
     top: 0;
-    transition: all 0.5s;
+    transition: background-color 0.5s;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .slider {
+      transform: scaleX(-1);
+      background-color: #404040;
+    }
   }
 
   .slider:before {
