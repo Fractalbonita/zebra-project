@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Reminder from './Reminder';
 
-export default function ({ reminders, onChange }) {
+export default function ({ reminders, toggleReminderState, deleteReminder }) {
   return (
     <>
       <Counter>
@@ -11,12 +11,12 @@ export default function ({ reminders, onChange }) {
       </Counter>
       <List>
         {reminders &&
-          reminders.map((reminder) => (
+          reminders.map(({ id, reminder, completed }) => (
             <Reminder
-              key={reminder.id}
+              key={id}
               name={reminder}
-              status={reminder.completed}
-              onChange={onChange}
+              completed={completed}
+              onChange={() => toggleReminderState(id)}
             />
           ))}
       </List>

@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function ({ name, value, onChange }) {
-  let { reminder } = name;
-
+export default function ({ name, id, completed, onChange }) {
   return (
     <ListItem>
-      <input type="checkbox" value={value} onChange={onChange} />
-      <p>{reminder}</p>
+      <input
+        id={id}
+        type="checkbox"
+        defaultChecked={completed}
+        onChange={onChange}
+      />
+      <p>{name}</p>
     </ListItem>
   );
 }

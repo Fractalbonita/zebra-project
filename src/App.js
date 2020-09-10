@@ -6,14 +6,21 @@ import { useLocalStorageForReminders } from './hooks/useLocalStorageForReminders
 import ReminderList from './components/ReminderList';
 
 function App() {
-  const [reminders, addReminder] = useLocalStorageForReminders();
+  const {
+    reminders,
+    addReminder,
+    toggleReminderState,
+  } = useLocalStorageForReminders();
 
   return (
     <div className="app">
       <GlobalStyles />
       <h1>Hello Zebra!</h1>
       <ModeSwitcher />
-      <ReminderList reminders={reminders} />
+      <ReminderList
+        reminders={reminders}
+        toggleReminderState={toggleReminderState}
+      />
       <ReminderForm addReminder={addReminder} />
     </div>
   );
