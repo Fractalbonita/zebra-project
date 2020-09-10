@@ -25,5 +25,14 @@ export function useLocalStorageForReminders() {
     setReminders([...reminders, newReminder]);
   }
 
-  return [reminders, addReminder];
+  function toggleReminderState(id) {
+    const updatedReminders = reminders.map((reminder) =>
+      id === reminder.id
+        ? { ...reminder, completed: !reminder.completed }
+        : reminder
+    );
+    setReminders(updatedReminders);
+  }
+
+  return { reminders, addReminder, toggleReminderState };
 }
