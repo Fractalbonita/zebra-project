@@ -10,6 +10,7 @@ function App() {
     reminders,
     addReminder,
     toggleReminderState,
+    deleteReminder,
   } = useLocalStorageForReminders();
 
   return (
@@ -20,6 +21,7 @@ function App() {
       <ReminderList
         reminders={reminders}
         toggleReminderState={toggleReminderState}
+        deleteReminder={deleteReminder}
       />
       <ReminderForm addReminder={addReminder} />
     </div>

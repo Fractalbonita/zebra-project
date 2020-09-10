@@ -34,5 +34,14 @@ export function useLocalStorageForReminders() {
     setReminders(updatedReminders);
   }
 
-  return { reminders, addReminder, toggleReminderState };
+  function deleteReminder(id) {
+    console.log(id);
+    const filteredReminders = reminders.filter(
+      (reminder) => id !== reminder.id
+    );
+    console.log(filteredReminders, reminders);
+    setReminders(filteredReminders);
+  }
+
+  return { reminders, addReminder, toggleReminderState, deleteReminder };
 }

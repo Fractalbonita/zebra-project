@@ -17,6 +17,7 @@ export default function ({ reminders, toggleReminderState, deleteReminder }) {
               name={reminder}
               completed={completed}
               onChange={() => toggleReminderState(id)}
+              onClick={() => deleteReminder(id)}
             />
           ))}
       </List>
