@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from './Button';
 
-export default function ({ name, id, completed, onChange }) {
+export default function ({ name, id, completed, onChange, onClick }) {
   return (
     <ListItem>
       <input
@@ -11,26 +12,28 @@ export default function ({ name, id, completed, onChange }) {
         onChange={onChange}
       />
       <p>{name}</p>
+      <Button type="button" name="delete" icon="delete" onClick={onClick} />
     </ListItem>
   );
 }
 
 const ListItem = styled.li`
-  display: grid;
-  grid-template-columns: 45px auto;
   align-items: center;
-  margin: 1rem 0;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 30px auto 45px;
+  margin: 0.5rem 0;
   word-break: normal;
 
   input {
-    justify-self: center;
     border: 1px solid var(--text);
     border-radius: 50%;
     box-shadow: 0 0 0 0px var(--primary);
+    height: 20px;
+    justify-self: center;
     margin: 0;
     outline: none;
     transition: box-shadow 0.2s;
-    height: 20px;
     width: 20px;
 
     &:hover {
