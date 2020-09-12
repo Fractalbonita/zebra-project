@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import ReminderEdit from './ReminderEdit';
 
 export default function ({
   name,
@@ -12,61 +13,21 @@ export default function ({
   previousName,
 }) {
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState(previousName);
-  const editInputRef = useRef(null);
-  const wasEditing = usePrevious(isEditing);
-
-  function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
-
-  useEffect(() => {
-    if (!wasEditing && isEditing) {
-      editInputRef.current.focus();
-    }
-  }, [wasEditing, isEditing]);
 
   return (
     <ListItem>
       {isEditing ? (
-        <div>
-          <input
-            id={id}
-            type="checkbox"
-            defaultChecked={completed}
-            onChange={onCheck}
-          />
-          <form
-            onSubmit={(event) => {
-              console.log('hello');
-              event.preventDefault();
-              onChange(newName);
-              setEditing(false);
-            }}
-          >
-            <input
-              id="reminder"
-              type="text"
-              value={newName}
-              min="1"
-              onChange={(event) => {
-                setNewName(event.target.value);
-              }}
-              ref={editInputRef}
-            />
-            <Button type="submit" name="save" icon="save_alt" />
-          </form>
-          <Button
-            type="button"
-            name="delete"
-            icon="delete"
-            onClick={onDelete}
-          />
-        </div>
+        <ReminderEdit
+          id={id}
+          completed={completed}
+          onCheck={onCheck}
+          onDelete={onDelete}
+          onChange={(newName) => {
+            setEditing(false);
+            onChange(newName);
+          }}
+          previousName={previousName}
+        />
       ) : (
         <div>
           <input

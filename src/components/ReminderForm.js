@@ -48,6 +48,7 @@ const Container = styled.div`
   input {
     background-color: var(--surface);
     border: none;
+    border-radius: 0;
     border-bottom: 1px solid var(--text);
     border-left: 1px solid lightgrey;
     border-right: 1px solid lightgrey;
