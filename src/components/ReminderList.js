@@ -18,6 +18,7 @@ export default function ({
         {reminders &&
           reminders.map(({ id, reminder, completed }) => (
             <Reminder
+              initialValue={reminder}
               key={id}
               name={reminder}
               completed={completed}

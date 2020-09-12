@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 
-export default function ({ name, id, completed, onCheck, onDelete, onChange }) {
+export default function ({
+  name,
+  id,
+  completed,
+  onCheck,
+  onDelete,
+  onChange,
+  initialValue,
+}) {
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState('');
+  const [newName, setNewName] = useState(initialValue);
 
   return (
     <ListItem>
@@ -21,7 +29,6 @@ export default function ({ name, id, completed, onCheck, onDelete, onChange }) {
               console.log('hello');
               event.preventDefault();
               onChange(newName);
-              setNewName('');
               setEditing(false);
             }}
           >
