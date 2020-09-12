@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Reminder from './Reminder';
 
@@ -18,7 +18,7 @@ export default function ({
         {reminders &&
           reminders.map(({ id, reminder, completed }) => (
             <Reminder
-              initialValue={reminder}
+              previousName={reminder}
               key={id}
               name={reminder}
               completed={completed}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 
@@ -9,10 +9,26 @@ export default function ({
   onCheck,
   onDelete,
   onChange,
-  initialValue,
+  previousName,
 }) {
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState(initialValue);
+  const [newName, setNewName] = useState(previousName);
+  const editInputRef = useRef(null);
+  const wasEditing = usePrevious(isEditing);
+
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
+  useEffect(() => {
+    if (!wasEditing && isEditing) {
+      editInputRef.current.focus();
+    }
+  }, [wasEditing, isEditing]);
 
   return (
     <ListItem>
@@ -40,6 +56,7 @@ export default function ({
               onChange={(event) => {
                 setNewName(event.target.value);
               }}
+              ref={editInputRef}
             />
             <Button type="submit" name="save" icon="save_alt" />
           </form>
