@@ -15,7 +15,7 @@ export default function ({
   const [isEditing, setEditing] = useState(false);
 
   return (
-    <ListItem>
+    <li>
       {isEditing ? (
         <ReminderEdit
           id={id}
@@ -29,7 +29,7 @@ export default function ({
           previousName={previousName}
         />
       ) : (
-        <div>
+        <ReminderView>
           <input
             id={id}
             type="checkbox"
@@ -49,40 +49,26 @@ export default function ({
             icon="delete"
             onClick={onDelete}
           />
-        </div>
+        </ReminderView>
       )}
-    </ListItem>
+    </li>
   );
 }
 
-const ListItem = styled.li`
-  div {
-    align-items: center;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 30px auto 40px 40px;
-    margin: 0.5rem 0;
-    word-break: normal;
-  }
+const ReminderView = styled.div`
+  align-items: center;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 30px auto 40px 40px;
+  margin: 0.5rem 0;
+  word-break: normal;
 
   input {
-    border: 1px solid var(--text);
-    height: 20px;
     justify-self: center;
     margin: 0;
-    width: 20px;
 
     &:hover {
       cursor: pointer;
-    }
-
-    &:focus {
-      border: 2px solid var(--primary);
-    }
-
-    &:checked {
-      background-color: var(--text);
-      color: var(--surface);
     }
 
     &:checked + p {
@@ -93,33 +79,5 @@ const ListItem = styled.li`
 
   p {
     margin: 0;
-  }
-
-  form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  & #reminder {
-    width: 100%;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:focus {
-      border: 2px solid var(--primary);
-    }
-
-    &:checked {
-      background-color: var(--text);
-      color: var(--surface);
-    }
-
-    &:checked + p {
-      text-decoration: line-through;
-      text-decoration-color: var(--text);
-    }
   }
 `;

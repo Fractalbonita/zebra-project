@@ -30,8 +30,8 @@ export default function ({ addReminder }) {
 }
 
 const Form = styled.form`
-  position: fixed;
   bottom: 50px;
+  position: fixed;
   width: calc(100vw - 40px);
 
   label {
@@ -47,15 +47,14 @@ const Container = styled.div`
 
   input {
     background-color: var(--surface);
-    border: none;
     border-radius: 0;
-    border-bottom: 1px solid var(--text);
+    border-bottom: 1.5px solid var(--text);
     border-left: 1px solid lightgrey;
     border-right: 1px solid lightgrey;
     border-top: 1px solid lightgrey;
     color: var(--text);
-    height: 36px;
     font-size: 16px;
+    height: 36px;
     padding: 0 10px;
     width: 100%;
 
