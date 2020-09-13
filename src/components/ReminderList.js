@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Reminder from './ReminderListItem';
+import { FILTER_MAP } from './ReminderListFilter';
 
 export default function ({
   reminders,
   toggleReminderState,
   deleteReminder,
   editReminder,
+  filter,
 }) {
   return (
     <>
@@ -16,17 +18,19 @@ export default function ({
       </Counter>
       <List>
         {reminders &&
-          reminders.map(({ id, reminder, completed }) => (
-            <Reminder
-              previousName={reminder}
-              key={id}
-              name={reminder}
-              completed={completed}
-              onCheck={() => toggleReminderState(id)}
-              onDelete={() => deleteReminder(id)}
-              onChange={(newName) => editReminder(id, newName)}
-            />
-          ))}
+          reminders
+            .filter((reminder) => FILTER_MAP[filter](reminder))
+            .map(({ id, reminder, completed }) => (
+              <Reminder
+                previousName={reminder}
+                key={id}
+                name={reminder}
+                completed={completed}
+                onCheck={() => toggleReminderState(id)}
+                onDelete={() => deleteReminder(id)}
+                onChange={(newName) => editReminder(id, newName)}
+              />
+            ))}
       </List>
     </>
   );
