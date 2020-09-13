@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
-import ReminderEdit from './ReminderEdit';
+import ReminderEdit from './ReminderListItemEdit';
 
 export default function ({
   name,

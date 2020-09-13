@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Reminder from './Reminder';
+import Reminder from './ReminderListItem';
 
 export default function ({
   reminders,
