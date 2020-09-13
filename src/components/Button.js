@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Icon from './Icon';
 
 export default function ({
+  isPressed,
   background,
   border,
   disabled,
@@ -19,7 +20,13 @@ export default function ({
   type,
 }) {
   return (
-    <Button disabled={disabled} type={type} name={name} onClick={onClick}>
+    <Button
+      disabled={disabled}
+      type={type}
+      name={name}
+      onClick={onClick}
+      aria-pressed={isPressed}
+    >
       <Icon icon={icon} />
       {title}
     </Button>
@@ -63,6 +70,11 @@ const Button = styled.button`
     background-color: ${(props) => props.background || 'lightgrey'};
     color: ${(props) => props.background || 'var(--surface)'};
     animation: gradient 0.2s;
+  }
+
+  &[aria-pressed='true'] {
+    background-color: ${(props) => props.background || 'var(--surface)'};
+    color: ${(props) => props.background || 'var(--primary)'};
   }
 
   span {
