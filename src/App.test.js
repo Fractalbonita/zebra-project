@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
 jest.mock('./components/ModeSwitcher', () => jest.fn());
@@ -14,9 +14,27 @@ ModeSwitcher.mockImplementation(() => <div />);
 ReminderList.mockImplementation(() => <div />);
 ReminderForm.mockImplementation(() => <div />);
 
+const ActualReminderForm = jest.requireActual('./components/ReminderForm');
+
 describe('App', () => {
+  beforeEach(() => {
+    Object.defineProperty(window, 'localStorage', {
+      value: {
+        setItem: jest.fn(() => null),
+        getItem: jest.fn(() => null),
+      },
+      writeable: true,
+    });
+  });
+
   test('renders app', () => {
+    const getItem = spyOn(window.localStorage, 'getItem');
+    const setItem = spyOn(window.localStorage, 'setItem');
+    const key = 'reminders';
+    const value = '[]';
     render(<App />);
+    expect(setItem).toHaveBeenCalledWith(key, value);
+    // expect(getItem).toHaveBeenCalledTimes(1);
   });
 
   test('contains ModeSwitcher', () => {
@@ -58,5 +76,17 @@ describe('App', () => {
       'color: inherit',
       'height: 100vh'
     );
+  });
+
+  test.skip('calls localStorage on reminder submit', () => {
+    const setItem = spyOn(window.localStorage, 'setItem');
+    ReminderForm.mockImplementation(({ ...props }) => (
+      <ActualReminderForm {...props} />
+    ));
+    const { queryByPlaceholderText } = render(<App />);
+    const input = queryByPlaceholderText('e.g. Foo');
+    fireEvent.change(input, { target: { value: 'Foo' } });
+    expect(setItem).toHaveBeenCalledTimes(1);
+    expect(setItem).toHaveBeenCalledWith('reminders', 'Foo');
   });
 });

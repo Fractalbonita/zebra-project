@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Reminder from './Reminder';
+import Reminder from './ReminderListItem';
 
 describe('Reminder', () => {
   test('renders component', () => {
