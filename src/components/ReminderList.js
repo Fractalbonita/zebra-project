@@ -2,8 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Reminder from './ReminderListItem';
 import { FILTER_MAP } from './ReminderListFilter';
+import PropTypes from 'prop-types';
 
-export default function ({
+ReminderList.propTypes = {
+  reminders: PropTypes.array,
+  toggleReminderState: PropTypes.func,
+  deleteReminder: PropTypes.func,
+  editReminder: PropTypes.func,
+  filter: PropTypes.string,
+};
+
+export default function ReminderList({
   reminders,
   toggleReminderState,
   deleteReminder,

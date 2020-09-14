@@ -1,8 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import PropTypes from 'prop-types';
 
-export default function ({
+ReminderListItemEdit.propTypes = {
+  id: PropTypes.string,
+  completed: PropTypes.bool,
+  onCheck: PropTypes.func,
+  onDelete: PropTypes.func,
+  onChange: PropTypes.func,
+  previousName: PropTypes.string,
+};
+
+export default function ReminderListItemEdit({
   id,
   completed,
   onCheck,

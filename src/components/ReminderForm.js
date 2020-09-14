@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import PropTypes from 'prop-types';
 
-export default function ({ addReminder }) {
+ReminderForm.propTypes = {
+  addReminder: PropTypes.func,
+};
+
+export default function ReminderForm({ addReminder }) {
   const [value, setValue] = useState('');
 
   return (
