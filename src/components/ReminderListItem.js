@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
-import ReminderEdit from './ReminderListItemEdit';
+import ReminderListItemEdit from './ReminderListItemEdit';
 import PropTypes from 'prop-types';
 
 ReminderListItem.propTypes = {
@@ -28,7 +28,7 @@ export default function ReminderListItem({
   return (
     <li>
       {isEditing ? (
-        <ReminderEdit
+        <ReminderListItemEdit
           id={id}
           completed={completed}
           onCheck={onCheck}
@@ -40,7 +40,7 @@ export default function ReminderListItem({
           previousName={previousName}
         />
       ) : (
-        <ReminderView>
+        <ReminderListItemView>
           <input
             id={id}
             type="checkbox"
@@ -60,13 +60,13 @@ export default function ReminderListItem({
             icon="delete"
             onClick={onDelete}
           />
-        </ReminderView>
+        </ReminderListItemView>
       )}
     </li>
   );
 }
 
-const ReminderView = styled.div`
+const ReminderListItemView = styled.div`
   align-items: center;
   display: grid;
   grid-gap: 10px;
