@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import PropTypes from 'prop-types';
 
-// object with functions as values
-// Functions are used to filter the reminder array
+ReminderListFilter.propTypes = {
+  filter: PropTypes.string,
+  onFilter: PropTypes.func,
+};
+
 export const FILTER_MAP = {
   All: () => true,
   Active: (reminder) => !reminder.completed,
