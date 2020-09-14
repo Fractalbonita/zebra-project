@@ -1,7 +1,7 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-Icon.propTypes = { icon: propTypes.string };
+Icon.propTypes = { icon: PropTypes.string };
 
 export default function Icon({ icon, ...props }) {
   return (
