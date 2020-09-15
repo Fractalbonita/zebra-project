@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import TextButton from './TextButton';
 import PropTypes from 'prop-types';
 
 ReminderListFilter.propTypes = {
@@ -20,7 +20,7 @@ export default function ReminderListFilter({ filter, onFilter }) {
   return (
     <Container>
       {FILTER_NAMES.map((name) => (
-        <Button
+        <TextButton
           key={name}
           title={name}
           type="button"
