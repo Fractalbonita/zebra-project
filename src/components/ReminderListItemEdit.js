@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import IconButton from './IconButton';
+import FormIconButton from './FormIconButton';
 import PropTypes from 'prop-types';
 
 ReminderListItemEdit.propTypes = {
@@ -51,9 +52,20 @@ export default function ReminderListItemEdit({
           }}
           ref={editInputRef}
         />
-        <Button type="submit" name="save" icon="save_alt" />
+        <FormIconButton
+          type="submit"
+          title="save"
+          name="save"
+          icon="save_alt"
+        />
       </Form>
-      <Button type="button" name="delete" icon="delete" onClick={onDelete} />
+      <IconButton
+        type="button"
+        title="delete"
+        name="delete"
+        icon="delete"
+        onClick={onDelete}
+      />
     </Container>
   );
 }
@@ -62,12 +74,15 @@ const Container = styled.div`
   align-items: center;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 30px auto 40px;
+  grid-template-columns: 16px auto 40px;
   margin: 0.5rem 0;
 
   input {
     justify-self: center;
+    height: 16px;
     margin: 0;
+    padding: 4px;
+    width: 16px;
 
     &:hover {
       cursor: pointer;
@@ -81,24 +96,26 @@ const Form = styled.form`
 
   input {
     background-color: var(--surface);
-    border-bottom: 1px solid var(--text);
+    border-radius: 0;
+    border-bottom: 1.5px solid var(--text);
     border-left: 1px solid lightgrey;
     border-right: 1px solid lightgrey;
     border-top: 1px solid lightgrey;
     justify-self: center;
     color: var(--text);
     font-size: 16px;
-    height: 36px;
+    height: 40px;
     margin: 0;
-    padding: 0 10px;
+    padding: 0 8px;
     width: 100%;
 
     &:hover {
+      border: 1.5px solid var(--primary);
       cursor: text;
     }
 
     &:focus {
-      border: 1px solid var(--primary);
+      border: 2px solid var(--primary);
     }
 
     &::placeholder {
