@@ -35,7 +35,7 @@ const Button = styled.button`
   background-color: ${(props) => props.background || 'var(--primary)'};
   border: ${(props) => props.border || 'none'};
   border-radius: ${(props) => props.radius || '0'};
-  color: ${(props) => props.background || 'var(--surface)'};
+  color: ${(props) => props.color || 'var(--surface)'};
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -53,18 +53,18 @@ const Button = styled.button`
 
   &:hover {
     background-color: ${(props) => props.background || 'var(--primary)'};
-    color: ${(props) => props.background || 'var(--surface)'};
+    color: ${(props) => props.color || 'var(--surface)'};
   }
 
   &:focus {
     background-color: ${(props) => props.background || 'var(--primary)'};
-    color: ${(props) => props.background || 'var(--surface)'};
+    color: ${(props) => props.color || 'var(--surface)'};
   }
 
   &:active {
     animation: gradient 0.2s;
     background-color: ${(props) => props.background || 'lightgrey'};
-    color: ${(props) => props.background || 'var(--surface)'};
+    color: ${(props) => props.color || 'var(--surface)'};
   }
 
   span {

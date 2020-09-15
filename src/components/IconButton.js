@@ -35,7 +35,7 @@ const Button = styled.button`
   border-radius: 50%;
   background-color: ${(props) => props.background || 'var(--surface)'};
   border: ${(props) => props.border || 'none'};
-  color: ${(props) => props.background || 'var(--text)'};
+  color: ${(props) => props.color || 'var(--text)'};
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -43,27 +43,27 @@ const Button = styled.button`
   outline: none;
 
   &:disabled {
-    color: ${(props) => props.background || 'var(--text)'};
+    color: ${(props) => props.color || 'var(--text)'};
     cursor: not-allowed;
 
     &:hover {
-      color: ${(props) => props.background || 'var(--text)'};
+      color: ${(props) => props.color || 'var(--text)'};
     }
   }
 
   &:hover {
-    color: ${(props) => props.background || 'var(--primary)'};
+    color: ${(props) => props.color || 'var(--primary)'};
   }
 
   &:focus {
     background-color: ${(props) => props.background || 'var(--primary)'};
-    color: ${(props) => props.background || 'var(--surface)'};
+    color: ${(props) => props.color || 'var(--surface)'};
   }
 
   &:active {
     animation: gradient 0.2s;
     background-color: ${(props) => props.background || 'lightgrey'};
-    color: ${(props) => props.background || 'var(--surface)'};
+    color: ${(props) => props.color || 'var(--surface)'};
   }
 
   span {
