@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import FormIconButton from './FormIconButton';
 import PropTypes from 'prop-types';
 
 ReminderForm.propTypes = {
@@ -28,7 +28,13 @@ export default function ReminderForm({ addReminder }) {
           min="1"
           onChange={(event) => setValue(event.target.value)}
         />
-        <Button disabled={!value} type="submit" name="add" icon="add"></Button>
+        <FormIconButton
+          disabled={!value}
+          type="submit"
+          title="add"
+          name="add"
+          icon="add"
+        />
       </Container>
     </Form>
   );
@@ -47,32 +53,32 @@ const Form = styled.form`
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  grid-template-rows: 48px;
 
   input {
     background-color: var(--surface);
     border-radius: 0;
-    border-bottom: 1.5px solid var(--text);
+    border-bottom: 2px solid var(--text);
     border-left: 1px solid lightgrey;
-    border-right: 1px solid lightgrey;
+    border-right: 1px solid var(--text);
     border-top: 1px solid lightgrey;
     color: var(--text);
     font-size: 16px;
-    height: 36px;
-    padding: 0 10px;
-    width: 100%;
+    padding: 0 16px;
 
     &::placeholder {
       font-size: 14px;
     }
 
     &:hover {
+      border: 1.5px solid var(--primary);
       cursor: text;
     }
 
     &:focus {
-      border: 1.5px solid var(--primary);
+      border: 2px solid var(--primary);
     }
   }
 `;
