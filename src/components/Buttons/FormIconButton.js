@@ -43,11 +43,11 @@ const Button = styled.button`
   outline: none;
 
   &:disabled {
-    background-color: var(--text);
+    background-color: var(--accent);
     cursor: not-allowed;
 
     &:hover {
-      background-color: var(--text);
+      background-color: var(--accent);
     }
   }
 
