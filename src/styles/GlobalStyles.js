@@ -53,6 +53,7 @@ body.switch-color-scheme {
 body {
   background-color: var(--surface);
   color: var(--text);
+  font-family: 'Source Sans Pro', sans-serif;
   height: 100vh;
   margin: 0 auto;
   padding: 20px;
