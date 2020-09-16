@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import TextButton from './Buttons/TextButton';
 import PropTypes from 'prop-types';
 
 ReminderListFilter.propTypes = {
@@ -20,7 +20,7 @@ export default function ReminderListFilter({ filter, onFilter }) {
   return (
     <Container>
       {FILTER_NAMES.map((name) => (
-        <Button
+        <TextButton
           key={name}
           title={name}
           type="button"
@@ -34,8 +34,7 @@ export default function ReminderListFilter({ filter, onFilter }) {
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 1rem 0;
 `;

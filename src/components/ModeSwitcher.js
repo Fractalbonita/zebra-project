@@ -27,15 +27,15 @@ const SliderContainer = styled.div`
   align-items: center;
 
   span {
-    font-size: 32px;
+    font-size: 24px;
     padding: 0 8px;
   }
 
   label {
     display: inline-block;
-    height: 40px;
+    height: 32px;
     position: relative;
-    width: 80px;
+    width: 64px;
   }
 
   input {
@@ -50,7 +50,7 @@ const SliderContainer = styled.div`
   }
 
   input:checked + .slider:before {
-    transform: translate(40px);
+    transform: translate(32px);
   }
 
   .slider {
@@ -75,11 +75,11 @@ const SliderContainer = styled.div`
     background-color: #ffffff;
     bottom: 4px;
     content: '';
-    height: 32px;
+    height: 24px;
     left: 4px;
     position: absolute;
     transition: all 0.5s;
-    width: 32px;
+    width: 24px;
   }
 
   input:focus + .slider:before {
@@ -91,7 +91,7 @@ const SliderContainer = styled.div`
   }
 
   .slider.round {
-    border-radius: 42px;
+    border-radius: 40px;
   }
 
   .slider.round:before {
