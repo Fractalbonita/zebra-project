@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import IconButton from './IconButton';
-import FormIconButton from './FormIconButton';
+import IconButton from './Buttons/IconButton';
+import FormIconButton from './Buttons/FormIconButton';
 import PropTypes from 'prop-types';
 
 ReminderListItemEdit.propTypes = {
@@ -57,9 +57,11 @@ export default function ReminderListItemEdit({
           title="save"
           name="save"
           icon="save_alt"
+          isHidden={true}
         />
       </Form>
       <IconButton
+        isHidden={true}
         type="button"
         title="delete"
         name="delete"
@@ -98,24 +100,24 @@ const Form = styled.form`
     background-color: var(--surface);
     border-radius: 0;
     border-bottom: 1.5px solid var(--text);
-    border-left: 1px solid lightgrey;
-    border-right: 1px solid lightgrey;
-    border-top: 1px solid lightgrey;
-    justify-self: center;
+    border-left: none;
+    border-right: none;
+    border-top: none;
     color: var(--text);
     font-size: 16px;
     height: 40px;
+    justify-self: center;
     margin: 0;
     padding: 0 8px;
     width: 100%;
 
     &:hover {
-      border: 1.5px solid var(--primary);
+      border-bottom: 1.5px solid var(--primary);
       cursor: text;
     }
 
     &:focus {
-      border: 2px solid var(--primary);
+      border-bottom: 2px solid var(--primary);
     }
 
     &::placeholder {

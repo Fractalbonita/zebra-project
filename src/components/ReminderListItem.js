@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import IconButton from './IconButton';
+import IconButton from './Buttons/IconButton';
 import ReminderListItemEdit from './ReminderListItemEdit';
 import PropTypes from 'prop-types';
 
@@ -51,7 +51,7 @@ export default function ReminderListItem({
             <span>{name}</span>
           </label>
           <IconButton
-            isHidden="true"
+            isHidden={true}
             type="button"
             title="edit"
             name="edit"
@@ -59,7 +59,7 @@ export default function ReminderListItem({
             onClick={() => setEditing(true)}
           />
           <IconButton
-            isHidden="true"
+            isHidden={true}
             type="button"
             title="delete"
             name="delete"
@@ -99,6 +99,7 @@ const ReminderListItemView = styled.div`
     }
 
     &:checked + span {
+      color: var(--text);
       text-decoration: line-through;
       text-decoration-color: var(--text);
     }

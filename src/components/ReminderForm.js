@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import FormIconButton from './FormIconButton';
+import FormIconButton from './Buttons/FormIconButton';
 import PropTypes from 'prop-types';
 
 ReminderForm.propTypes = {
@@ -34,6 +34,7 @@ export default function ReminderForm({ addReminder }) {
           title="add"
           name="add"
           icon="add"
+          isHidden={true}
         />
       </Container>
     </Form>
@@ -61,9 +62,9 @@ const Container = styled.div`
     background-color: var(--surface);
     border-radius: 0;
     border-bottom: 2px solid var(--text);
-    border-left: 1px solid lightgrey;
-    border-right: 1px solid var(--text);
-    border-top: 1px solid lightgrey;
+    border-left: 1px solid var(--accent);
+    border-right: 1px solid var(--accent);
+    border-top: 1px solid var(--accent);
     color: var(--text);
     font-size: 16px;
     padding: 0 16px;
