@@ -4,6 +4,7 @@ import IconButton from './Buttons/IconButton';
 import ReminderListItemEdit from './ReminderListItemEdit';
 import PropTypes from 'prop-types';
 import ReminderListItemSchedule from './ReminderListItemSchedule';
+import { getLocaleDate } from '../utilities/getLocaleDate';
 
 ReminderListItem.propTypes = {
   name: PropTypes.string,
@@ -14,6 +15,7 @@ ReminderListItem.propTypes = {
   onChange: PropTypes.func,
   previousName: PropTypes.string,
   onSchedule: PropTypes.func,
+  dueDate: PropTypes.number,
 };
 
 export default function ReminderListItem({
@@ -25,6 +27,7 @@ export default function ReminderListItem({
   onChange,
   previousName,
   onSchedule,
+  dueDate,
 }) {
   const [isEditing, setEditing] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +57,7 @@ export default function ReminderListItem({
             />
             <span>{name}</span>
           </label>
+          <p>{getLocaleDate(dueDate)}</p>
           {isOpen && (
             <ReminderListItemSchedule
               onSchedule={onSchedule}

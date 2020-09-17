@@ -31,12 +31,13 @@ export default function ReminderList({
         {reminders &&
           reminders
             .filter((reminder) => FILTER_MAP[filter](reminder))
-            .map(({ id, reminder, completed }) => (
+            .map(({ id, reminder, completed, dueDate }) => (
               <ReminderListItem
                 previousName={reminder}
                 key={id}
                 name={reminder}
                 completed={completed}
+                dueDate={dueDate}
                 onCheck={() => toggleReminderState(id)}
                 onDelete={() => deleteReminder(id)}
                 onChange={(newName) => editReminder(id, newName)}
