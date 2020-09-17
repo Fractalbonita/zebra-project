@@ -10,6 +10,7 @@ ReminderList.propTypes = {
   deleteReminder: PropTypes.func,
   editReminder: PropTypes.func,
   filter: PropTypes.string,
+  scheduleReminder: PropTypes.func,
 };
 
 export default function ReminderList({
@@ -18,6 +19,7 @@ export default function ReminderList({
   deleteReminder,
   editReminder,
   filter,
+  scheduleReminder,
 }) {
   return (
     <>
@@ -38,6 +40,7 @@ export default function ReminderList({
                 onCheck={() => toggleReminderState(id)}
                 onDelete={() => deleteReminder(id)}
                 onChange={(newName) => editReminder(id, newName)}
+                onSchedule={(date) => scheduleReminder(id, date)}
               />
             ))}
       </List>

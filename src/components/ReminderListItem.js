@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import IconButton from './Buttons/IconButton';
 import ReminderListItemEdit from './ReminderListItemEdit';
 import PropTypes from 'prop-types';
+import ReminderListItemSchedule from './ReminderListItemSchedule';
 
 ReminderListItem.propTypes = {
   name: PropTypes.string,
@@ -12,6 +13,7 @@ ReminderListItem.propTypes = {
   onDelete: PropTypes.func,
   onChange: PropTypes.func,
   previousName: PropTypes.string,
+  onSchedule: PropTypes.func,
 };
 
 export default function ReminderListItem({
@@ -22,8 +24,10 @@ export default function ReminderListItem({
   onDelete,
   onChange,
   previousName,
+  onSchedule,
 }) {
   const [isEditing, setEditing] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <li>
@@ -50,6 +54,20 @@ export default function ReminderListItem({
             />
             <span>{name}</span>
           </label>
+          {isOpen && (
+            <ReminderListItemSchedule
+              onSchedule={onSchedule}
+              onClose={() => setIsOpen(false)}
+            />
+          )}
+          <IconButton
+            isHidden={true}
+            type="button"
+            title="schedule"
+            name="schedule"
+            icon="schedule"
+            onClick={() => setIsOpen(true)}
+          />
           <IconButton
             isHidden={true}
             type="button"
@@ -75,8 +93,8 @@ export default function ReminderListItem({
 const ReminderListItemView = styled.div`
   align-items: center;
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: auto 40px 40px;
+  grid-gap: 5px;
+  grid-template-columns: auto 40px 40px 40px;
   margin: 0.5rem 0;
   word-break: normal;
 
