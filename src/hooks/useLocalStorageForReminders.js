@@ -48,11 +48,19 @@ export function useLocalStorageForReminders() {
     setReminders(editedReminders);
   }
 
+  function scheduleReminder(id, date) {
+    const scheduledReminders = reminders.map((reminder) =>
+      id === reminder.id ? { ...reminder, dueDate: date.getTime() } : reminder
+    );
+    setReminders(scheduledReminders);
+  }
+
   return {
     reminders,
     addReminder,
     toggleReminderState,
     deleteReminder,
     editReminder,
+    scheduleReminder,
   };
 }
