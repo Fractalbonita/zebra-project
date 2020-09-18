@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DateTimePicker } from '@material-ui/pickers';
+import { DatePicker } from '@material-ui/pickers';
 import PropTypes from 'prop-types';
 
 ReminderListItemSchedule.propTypes = {
@@ -10,7 +10,7 @@ ReminderListItemSchedule.propTypes = {
 export default function ReminderListItemSchedule({ onClose, onSchedule }) {
   const [date, setDate] = useState(new Date());
   return (
-    <DateTimePicker
+    <DatePicker
       variant="dialog"
       value={date}
       onChange={setDate}
