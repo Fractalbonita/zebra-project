@@ -11,7 +11,7 @@ ReminderListFilter.propTypes = {
 export const FILTER_MAP = {
   Active: (reminder) => !reminder.completed,
   Completed: (reminder) => reminder.completed,
-  Scheduled: (reminder) => reminder.dueDate,
+  Scheduled: (reminder) => reminder.dueDate && !reminder.completed,
 };
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
