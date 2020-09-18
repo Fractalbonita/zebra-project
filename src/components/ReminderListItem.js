@@ -48,16 +48,16 @@ export default function ReminderListItem({
         />
       ) : (
         <ReminderListItemView>
-          <label>
-            <input
-              id={id}
-              type="checkbox"
-              defaultChecked={completed}
-              onChange={onCheck}
-            />
-            <span>{name}</span>
-          </label>
-          <p>{getLocaleDate(dueDate)}</p>
+          <input
+            id={id}
+            type="checkbox"
+            defaultChecked={completed}
+            onChange={onCheck}
+          />
+          <div>
+            <label htmlFor={id}>{name}</label>
+            <time>{getLocaleDate(dueDate)}</time>
+          </div>
           {isOpen && (
             <ReminderListItemSchedule
               onSchedule={onSchedule}
@@ -95,23 +95,17 @@ export default function ReminderListItem({
 }
 
 const ReminderListItemView = styled.div`
-  align-items: center;
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: auto 40px 40px 40px;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   word-break: normal;
 
-  label {
-    display: grid;
-    grid-template-columns: 16px auto;
-    align-items: center;
-    gap: 16px;
-  }
+  align-items: center;
+  display: grid;
+  grid-template-columns: 32px 1fr repeat(3, 40px);
+  grid-template-rows: 40px;
 
   input {
-    justify-self: center;
     height: 16px;
+    justify-self: start;
     margin: 0;
     padding: 4px;
     width: 16px;
@@ -127,7 +121,9 @@ const ReminderListItemView = styled.div`
     }
   }
 
-  span {
-    margin: 0;
+  time {
+    display: block;
+    font-size: 14px;
+    margin: 0.2rem 0;
   }
 `;

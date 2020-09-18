@@ -35,6 +35,7 @@ export default function ReminderList({
               <ReminderListItem
                 previousName={reminder}
                 key={id}
+                id={id}
                 name={reminder}
                 completed={completed}
                 dueDate={dueDate}
