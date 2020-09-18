@@ -17,7 +17,7 @@ function App() {
     scheduleReminder,
   } = useLocalStorageForReminders();
 
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState('Active');
 
   return (
     <div className="app">
