@@ -54,7 +54,7 @@ export default function ReminderListItemEdit({
         />
         <FormIconButton
           type="submit"
-          title="save"
+          title="Save"
           name="save"
           icon="save_alt"
           isHidden={true}
@@ -63,7 +63,7 @@ export default function ReminderListItemEdit({
       <IconButton
         isHidden={true}
         type="button"
-        title="delete"
+        title="Delete"
         name="delete"
         icon="delete"
         onClick={onDelete}

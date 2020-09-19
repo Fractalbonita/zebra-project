@@ -67,7 +67,14 @@ export default function ReminderListItem({
           <IconButton
             isHidden={true}
             type="button"
-            title="schedule"
+            title="Dropdown menu"
+            name="dropdownMenu"
+            icon="more_vert"
+          />
+          <IconButton
+            isHidden={true}
+            type="button"
+            title="Schedule"
             name="schedule"
             icon="schedule"
             onClick={() => setIsOpen(true)}
@@ -75,7 +82,7 @@ export default function ReminderListItem({
           <IconButton
             isHidden={true}
             type="button"
-            title="edit"
+            title="Edit"
             name="edit"
             icon="edit"
             onClick={() => setEditing(true)}
@@ -83,7 +90,7 @@ export default function ReminderListItem({
           <IconButton
             isHidden={true}
             type="button"
-            title="delete"
+            title="Delete"
             name="delete"
             icon="delete"
             onClick={onDelete}
