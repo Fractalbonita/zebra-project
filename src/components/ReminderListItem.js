@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import IconButton from './Buttons/IconButton';
 import ReminderListItemEdit from './ReminderListItemEdit';
 import PropTypes from 'prop-types';
+import ReminderListItemSchedule from './ReminderListItemSchedule';
+import { getLocaleDate } from '../utilities/getLocaleDate';
 
 ReminderListItem.propTypes = {
   name: PropTypes.string,
@@ -12,6 +14,8 @@ ReminderListItem.propTypes = {
   onDelete: PropTypes.func,
   onChange: PropTypes.func,
   previousName: PropTypes.string,
+  onSchedule: PropTypes.func,
+  dueDate: PropTypes.number,
 };
 
 export default function ReminderListItem({
@@ -22,8 +26,11 @@ export default function ReminderListItem({
   onDelete,
   onChange,
   previousName,
+  onSchedule,
+  dueDate,
 }) {
   const [isEditing, setEditing] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <li>
@@ -41,15 +48,30 @@ export default function ReminderListItem({
         />
       ) : (
         <ReminderListItemView>
-          <label>
-            <input
-              id={id}
-              type="checkbox"
-              defaultChecked={completed}
-              onChange={onCheck}
+          <input
+            id={id}
+            type="checkbox"
+            defaultChecked={completed}
+            onChange={onCheck}
+          />
+          <div>
+            <label htmlFor={id}>{name}</label>
+            <time>{getLocaleDate(dueDate)}</time>
+          </div>
+          {isOpen && (
+            <ReminderListItemSchedule
+              onSchedule={onSchedule}
+              onClose={() => setIsOpen(false)}
             />
-            <span>{name}</span>
-          </label>
+          )}
+          <IconButton
+            isHidden={true}
+            type="button"
+            title="schedule"
+            name="schedule"
+            icon="schedule"
+            onClick={() => setIsOpen(true)}
+          />
           <IconButton
             isHidden={true}
             type="button"
@@ -73,23 +95,17 @@ export default function ReminderListItem({
 }
 
 const ReminderListItemView = styled.div`
-  align-items: center;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: auto 40px 40px;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   word-break: normal;
 
-  label {
-    display: grid;
-    grid-template-columns: 16px auto;
-    align-items: center;
-    gap: 16px;
-  }
+  align-items: center;
+  display: grid;
+  grid-template-columns: 32px 1fr repeat(3, 40px);
+  grid-template-rows: 40px;
 
   input {
-    justify-self: center;
     height: 16px;
+    justify-self: start;
     margin: 0;
     padding: 4px;
     width: 16px;
@@ -105,7 +121,10 @@ const ReminderListItemView = styled.div`
     }
   }
 
-  span {
-    margin: 0;
+  time {
+    color: var(--accent);
+    display: block;
+    font-size: 14px;
+    margin: 0.2rem 0;
   }
 `;
