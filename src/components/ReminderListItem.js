@@ -122,6 +122,7 @@ const ReminderListItemView = styled.div`
   }
 
   time {
+    color: var(--accent);
     display: block;
     font-size: 14px;
     margin: 0.2rem 0;
