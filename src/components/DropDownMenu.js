@@ -6,9 +6,7 @@ import { useMenuToggle } from '../hooks/useMenuToggle';
 import PropTypes from 'prop-types';
 
 DropDownMenu.propTypes = {
-  onSchedule: PropTypes.func,
-  onEdit: PropTypes.func,
-  onDelete: PropTypes.func,
+  children: PropTypes.element.isRequired,
 };
 
 export default function DropDownMenu({ children }) {
