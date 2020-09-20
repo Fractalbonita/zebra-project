@@ -31,7 +31,7 @@ export default function ReminderForm({ addReminder }) {
         <FormIconButton
           disabled={!value}
           type="submit"
-          title="add"
+          title="Add"
           name="add"
           icon="add"
           isHidden={true}

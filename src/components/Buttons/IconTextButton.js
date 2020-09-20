@@ -1,24 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '../Icon';
 import PropTypes from 'prop-types';
 
-IconButton.propTypes = {
+IconTextButton.propTypes = {
   disabled: PropTypes.bool,
   icon: PropTypes.string,
   isHidden: PropTypes.bool,
-  isShown: PropTypes.bool,
+  dropdown: PropTypes.bool,
   name: PropTypes.string,
   onClick: PropTypes.func,
   title: PropTypes.string,
   type: PropTypes.string,
 };
 
-export default function IconButton({
+export default function IconTextButton({
   disabled,
   icon,
   isHidden,
-  isShown,
+  dropdown,
   name,
   onClick,
   title,
@@ -30,25 +30,28 @@ export default function IconButton({
       type={type}
       name={name}
       onClick={onClick}
-      isShown={isShown}
+      dropdown={dropdown}
     >
       <Icon aria-hidden={isHidden} icon={icon} />
-      <div>{title}</div>
+      {title}
     </Button>
   );
 }
 
 const Button = styled.button`
   align-items: center;
-  border-radius: 50%;
   background-color: var(--surface);
   border: none;
   color: var(--text);
   cursor: pointer;
   display: flex;
-  justify-content: center;
-  padding: 0;
+  font-size: 15px;
+  height: 36px;
+  justify-content: flex-start;
+  padding: 0 16px 0 12px;
   outline: none;
+  text-align: left;
+  width: ${(props) => props.dropdownWidth || ''};
 
   &:disabled {
     color: var(--text);
@@ -66,12 +69,6 @@ const Button = styled.button`
   &:focus {
     background-color: var(--primary);
     color: var(--surface);
-    ${({ isShown }) =>
-      isShown &&
-      `
-    background-color: var(--surface);
-    color: var(--text);
-  `}
   }
 
   &:active {
@@ -81,19 +78,14 @@ const Button = styled.button`
   }
 
   span {
-    font-size: 24px;
-    padding: 8px;
+    font-size: 18px;
+    padding-right: 8px;
   }
 
-  div {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
+  ${(props) =>
+    props.dropdown &&
+    css`
+      background-color: var(--on-surface);
+      width: 100%;
+    `}
 `;

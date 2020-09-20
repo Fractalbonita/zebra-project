@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import IconButton from './Buttons/IconButton';
+import IconTextButton from './Buttons/IconTextButton';
 import ReminderListItemEdit from './ReminderListItemEdit';
 import PropTypes from 'prop-types';
 import ReminderListItemSchedule from './ReminderListItemSchedule';
 import { getLocaleDate } from '../utilities/getLocaleDate';
+import DropDownMenu from './DropDownMenu';
 
 ReminderListItem.propTypes = {
   name: PropTypes.string,
@@ -56,7 +57,7 @@ export default function ReminderListItem({
           />
           <div>
             <label htmlFor={id}>{name}</label>
-            <time>{getLocaleDate(dueDate)}</time>
+            {getLocaleDate(dueDate) && <time>{getLocaleDate(dueDate)}</time>}
           </div>
           {isOpen && (
             <ReminderListItemSchedule
@@ -64,30 +65,35 @@ export default function ReminderListItem({
               onClose={() => setIsOpen(false)}
             />
           )}
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="schedule"
-            name="schedule"
-            icon="schedule"
-            onClick={() => setIsOpen(true)}
-          />
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="edit"
-            name="edit"
-            icon="edit"
-            onClick={() => setEditing(true)}
-          />
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="delete"
-            name="delete"
-            icon="delete"
-            onClick={onDelete}
-          />
+          <DropDownMenu>
+            <IconTextButton
+              dropdown
+              type="button"
+              icon="schedule"
+              isHidden={true}
+              title="Schedule"
+              name="schedule"
+              onClick={() => setIsOpen(true)}
+            />
+            <IconTextButton
+              dropdown
+              type="button"
+              icon="edit"
+              isHidden={true}
+              title="Edit"
+              name="edit"
+              onClick={() => setEditing(true)}
+            />
+            <IconTextButton
+              dropdown
+              type="button"
+              icon="delete"
+              isHidden={true}
+              title="Delete"
+              name="delete"
+              onClick={onDelete}
+            />
+          </DropDownMenu>
         </ReminderListItemView>
       )}
     </li>
@@ -95,13 +101,12 @@ export default function ReminderListItem({
 }
 
 const ReminderListItemView = styled.div`
-  margin: 1rem 0;
-  word-break: normal;
-
   align-items: center;
   display: grid;
-  grid-template-columns: 32px 1fr repeat(3, 40px);
+  grid-template-columns: 32px 1fr 40px;
   grid-template-rows: 40px;
+  margin: 1rem 0;
+  word-break: normal;
 
   input {
     height: 16px;
