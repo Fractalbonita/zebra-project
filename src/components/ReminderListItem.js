@@ -101,13 +101,12 @@ export default function ReminderListItem({
 }
 
 const ReminderListItemView = styled.div`
-  margin: 1rem 0;
-  word-break: normal;
-
   align-items: center;
   display: grid;
   grid-template-columns: 32px 1fr 40px;
   grid-template-rows: 40px;
+  margin: 1rem 0;
+  word-break: normal;
 
   input {
     height: 16px;
