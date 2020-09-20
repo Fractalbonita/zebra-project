@@ -21,6 +21,7 @@ export default function DropDownMenu({ children }) {
           title="Dropdown menu"
           name="dropdownMenu"
           icon="more_vert"
+          isShown={isShown}
           onClick={() => (isShown ? closeMenu() : showMenu())}
         />
       </div>
@@ -31,10 +32,6 @@ export default function DropDownMenu({ children }) {
 
 const Container = styled.div`
   position: relative;
-
-  & button:focus {
-    background-color: isShown && var(--surface);
-  }
 `;
 
 const Items = styled.div`
