@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import IconButton from './Buttons/IconButton';
 import { useMenuToggle } from '../hooks/useMenuToggle';
 
@@ -10,11 +11,11 @@ DropDownMenu.propTypes = {
   onDelete: PropTypes.func,
 };
 
-export default function DropDownMenu({ onSchedule, onEdit, onDelete }) {
+export default function DropDownMenu({ children }) {
   const [isShown, menuToggle, showMenu, closeMenu] = useMenuToggle();
 
   return (
-    <div>
+    <Container>
       <div ref={menuToggle}>
         <IconButton
           isHidden={true}
@@ -25,34 +26,18 @@ export default function DropDownMenu({ onSchedule, onEdit, onDelete }) {
           onClick={() => (isShown ? closeMenu() : showMenu())}
         />
       </div>
-      {isShown && (
-        <div>
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="Schedule"
-            name="schedule"
-            icon="schedule"
-            onClick={onSchedule}
-          />
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="Edit"
-            name="edit"
-            icon="edit"
-            onClick={onEdit}
-          />
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="Delete"
-            name="delete"
-            icon="delete"
-            onClick={onDelete}
-          />
-        </div>
-      )}
-    </div>
+      {isShown && <Items>{children}</Items>}
+    </Container>
   );
 }
+
+const Container = styled.div`
+  position: relative;
+`;
+
+const Items = styled.div`
+  position: absolute;
+  top: 0%;
+  right: 0;
+  z-index: 1000;
+`;

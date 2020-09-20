@@ -5,6 +5,7 @@ import ReminderListItemEdit from './ReminderListItemEdit';
 import PropTypes from 'prop-types';
 import ReminderListItemSchedule from './ReminderListItemSchedule';
 import { getLocaleDate } from '../utilities/getLocaleDate';
+import DropDownMenu from './DropDownMenu';
 
 ReminderListItem.propTypes = {
   name: PropTypes.string,
@@ -64,37 +65,32 @@ export default function ReminderListItem({
               onClose={() => setIsOpen(false)}
             />
           )}
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="Dropdown menu"
-            name="dropdownMenu"
-            icon="more_vert"
-          />
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="Schedule"
-            name="schedule"
-            icon="schedule"
-            onClick={() => setIsOpen(true)}
-          />
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="Edit"
-            name="edit"
-            icon="edit"
-            onClick={() => setEditing(true)}
-          />
-          <IconButton
-            isHidden={true}
-            type="button"
-            title="Delete"
-            name="delete"
-            icon="delete"
-            onClick={onDelete}
-          />
+          <DropDownMenu>
+            <IconButton
+              isHidden={true}
+              type="button"
+              title="Schedule"
+              name="schedule"
+              icon="schedule"
+              onClick={() => setIsOpen(true)}
+            />
+            <IconButton
+              isHidden={true}
+              type="button"
+              title="Edit"
+              name="edit"
+              icon="edit"
+              onClick={() => setEditing(true)}
+            />
+            <IconButton
+              isHidden={true}
+              type="button"
+              title="Delete"
+              name="delete"
+              icon="delete"
+              onClick={onDelete}
+            />
+          </DropDownMenu>
         </ReminderListItemView>
       )}
     </li>
@@ -107,7 +103,7 @@ const ReminderListItemView = styled.div`
 
   align-items: center;
   display: grid;
-  grid-template-columns: 32px 1fr repeat(3, 40px);
+  grid-template-columns: 32px 1fr 40px;
   grid-template-rows: 40px;
 
   input {

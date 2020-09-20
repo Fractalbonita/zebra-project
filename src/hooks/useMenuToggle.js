@@ -5,7 +5,7 @@ export function useMenuToggle() {
   const menuToggle = useRef();
 
   useEffect(() => {
-    document.addEventListener('click', closeMenu, true);
+    document.addEventListener('click', closeMenu);
     return () => document.removeEventListener('click', closeMenu);
   }, []);
 
@@ -14,7 +14,12 @@ export function useMenuToggle() {
   }
 
   function closeMenu(event) {
-    if (event && menuToggle.current.contains(event.target)) return;
+    if (
+      event &&
+      menuToggle.current &&
+      menuToggle.current.contains(event.target)
+    )
+      return;
     setShown(false);
   }
 
