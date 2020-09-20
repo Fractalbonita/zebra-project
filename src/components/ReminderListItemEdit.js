@@ -83,6 +83,7 @@ const Container = styled.div`
     justify-self: center;
     height: 16px;
     margin: 0;
+    outline: none;
     padding: 4px;
     width: 16px;
 
