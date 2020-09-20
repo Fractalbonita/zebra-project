@@ -6,7 +6,6 @@ import ReminderList from './components/ReminderList';
 import ReminderListFilter from './components/ReminderListFilter';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import DropDownMenu from './components/DropDownMenu';
 
 function App() {
   const {
@@ -39,7 +38,6 @@ function App() {
           filter={filter}
           scheduleReminder={scheduleReminder}
         />
-        <DropDownMenu />
         <ReminderForm addReminder={addReminder} />
       </MuiPickersUtilsProvider>
     </div>
