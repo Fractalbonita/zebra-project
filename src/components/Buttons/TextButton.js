@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-FormIconButton.propTypes = {
+TextButton.propTypes = {
   disabled: PropTypes.bool,
   isPressed: PropTypes.bool,
   name: PropTypes.string,
@@ -11,7 +11,7 @@ FormIconButton.propTypes = {
   type: PropTypes.string,
 };
 
-export default function FormIconButton({
+export default function TextButton({
   disabled,
   isPressed,
   name,
