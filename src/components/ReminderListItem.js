@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import IconButton from './Buttons/IconButton';
+import IconTextButton from './Buttons/IconTextButton';
 import ReminderListItemEdit from './ReminderListItemEdit';
 import PropTypes from 'prop-types';
 import ReminderListItemSchedule from './ReminderListItemSchedule';
@@ -57,7 +57,7 @@ export default function ReminderListItem({
           />
           <div>
             <label htmlFor={id}>{name}</label>
-            <time>{getLocaleDate(dueDate)}</time>
+            {getLocaleDate(dueDate) && <time>{getLocaleDate(dueDate)}</time>}
           </div>
           {isOpen && (
             <ReminderListItemSchedule
@@ -66,28 +66,31 @@ export default function ReminderListItem({
             />
           )}
           <DropDownMenu>
-            <IconButton
-              isHidden={true}
+            <IconTextButton
+              dropdown
               type="button"
+              icon="schedule"
+              isHidden={true}
               title="Schedule"
               name="schedule"
-              icon="schedule"
               onClick={() => setIsOpen(true)}
             />
-            <IconButton
-              isHidden={true}
+            <IconTextButton
+              dropdown
               type="button"
+              icon="edit"
+              isHidden={true}
               title="Edit"
               name="edit"
-              icon="edit"
               onClick={() => setEditing(true)}
             />
-            <IconButton
-              isHidden={true}
+            <IconTextButton
+              dropdown
               type="button"
+              icon="delete"
+              isHidden={true}
               title="Delete"
               name="delete"
-              icon="delete"
               onClick={onDelete}
             />
           </DropDownMenu>
