@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import IconButton from './Buttons/IconButton';
+import { useMenuToggle } from '../hooks/useMenuToggle';
+
 import PropTypes from 'prop-types';
 
 DropDownMenu.propTypes = {
@@ -9,19 +11,7 @@ DropDownMenu.propTypes = {
 };
 
 export default function DropDownMenu({ onSchedule, onEdit, onDelete }) {
-  const [isShown, setShown] = useState(false);
-  const menuToggle = useRef();
-
-  function closeMenu(event) {
-    console.log(event.target, menuToggle);
-    if (menuToggle.current.contains(event.target)) return;
-    setShown(false);
-  }
-
-  useEffect(() => {
-    document.addEventListener('click', closeMenu, true);
-    return () => document.removeEventListener('click', closeMenu);
-  }, []);
+  const [isShown, menuToggle, showMenu, closeMenu] = useMenuToggle();
 
   return (
     <div>
@@ -32,7 +22,7 @@ export default function DropDownMenu({ onSchedule, onEdit, onDelete }) {
           title="Dropdown menu"
           name="dropdownMenu"
           icon="more_vert"
-          onClick={isShown ? () => setShown(false) : () => setShown(true)}
+          onClick={() => (isShown ? closeMenu() : showMenu())}
         />
       </div>
       {isShown && (
@@ -43,7 +33,7 @@ export default function DropDownMenu({ onSchedule, onEdit, onDelete }) {
             title="Schedule"
             name="schedule"
             icon="schedule"
-            onClick={() => console.log('Hi')}
+            onClick={onSchedule}
           />
           <IconButton
             isHidden={true}
