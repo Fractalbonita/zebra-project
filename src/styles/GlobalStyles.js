@@ -5,6 +5,9 @@ const darkTheme = {
   surfaceColor: '#000000',
   primaryColor: 'palegreen',
   accentColor: 'lightgrey',
+  lightShadow: 'rgba(0,0,0,0.1)',
+  darkShadow: 'rgba(0,0,0,0.2)',
+  onSurfaceColor: '#404040',
 };
 
 const lightTheme = {
@@ -12,6 +15,9 @@ const lightTheme = {
   surfaceColor: '#ffffff',
   primaryColor: 'rosybrown',
   accentColor: 'lightgrey',
+  lightShadow: 'rgba(0,0,0,0.1)',
+  darkShadow: 'rgba(0,0,0,0.2)',
+  onSurfaceColor: '#ffffff',
 };
 
 export default createGlobalStyle`
@@ -20,6 +26,9 @@ export default createGlobalStyle`
   --text: ${lightTheme.textColor};
   --primary: ${lightTheme.primaryColor};
   --accent: ${lightTheme.accentColor};
+  --light-shadow: ${lightTheme.lightShadow};
+  --dark-shadow: ${lightTheme.darkShadow};
+  --on-surface: ${lightTheme.onSurfaceColor};
 }
 
 body.switch-color-scheme {
@@ -27,6 +36,9 @@ body.switch-color-scheme {
   --text: ${darkTheme.textColor};
   --primary: ${darkTheme.primaryColor};
   --accent: ${darkTheme.accentColor};
+  --light-shadow: ${darkTheme.lightShadow};
+  --dark-shadow: ${darkTheme.darkShadow};
+  --on-surface: ${darkTheme.onSurfaceColor};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,6 +47,9 @@ body.switch-color-scheme {
     --text: ${darkTheme.textColor};
     --primary: ${darkTheme.primaryColor};
     --accent: ${darkTheme.accentColor};
+    --light-shadow: ${darkTheme.lightShadow};
+    --dark-shadow: ${darkTheme.darkShadow};
+    --on-surface: ${darkTheme.onSurfaceColor};
   }
 
   body.switch-color-scheme {
@@ -42,6 +57,9 @@ body.switch-color-scheme {
     --text: ${lightTheme.textColor};
     --primary: ${lightTheme.primaryColor};
     --accent: ${lightTheme.accentColor};
+    --light-shadow: ${lightTheme.lightShadow};
+    --dark-shadow: ${lightTheme.darkShadow};
+    --on-surface: ${lightTheme.onSurfaceColor};
   }
 }
 
