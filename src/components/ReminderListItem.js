@@ -100,7 +100,7 @@ export default function ReminderListItem({
               isHidden={true}
               title="Location"
               name="location"
-              onClick={() => console.log('foo')}
+              onClick={() => alert('Coming soon!')}
             />
           </DropDownMenu>
         </ReminderListItemView>
