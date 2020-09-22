@@ -18,11 +18,11 @@ const materialTheme = createMuiTheme({
     },
     MuiPickersCalendarHeader: {
       switchHeader: {
-        backgroundColor: 'var(--surface)',
+        backgroundColor: 'var(--on-surface)',
         color: 'var(--text)',
       },
       iconButton: {
-        backgroundColor: 'var(--surface)',
+        backgroundColor: 'var(--on-surface)',
         color: 'var(--text)',
       },
       dayLabel: {
@@ -34,7 +34,7 @@ const materialTheme = createMuiTheme({
     },
     MuiPickersBasePicker: {
       pickerView: {
-        backgroundColor: 'var(--surface)',
+        backgroundColor: 'var(--on-surface)',
       },
     },
     MuiPickersDay: {
@@ -59,18 +59,21 @@ const materialTheme = createMuiTheme({
         color: 'var(--primary)',
       },
     },
-    MuiPickersModal: {
-      dialogAction: {
-        color: 'var(--primary)',
-      },
-    },
     MuiDialogActions: {
       root: {
-        backgroundColor: 'var(--surface)',
+        backgroundColor: 'var(--on-surface)',
       },
     },
     MuiButton: {
       label: {
+        color: 'var(--primary)',
+      },
+    },
+    MuiPickersYear: {
+      root: {
+        color: 'var(--text)',
+      },
+      yearSelected: {
         color: 'var(--primary)',
       },
     },
@@ -90,7 +93,8 @@ export default function ReminderListItemSchedule({ onClose, onSchedule }) {
         onAccept={onSchedule}
         format="dd MMM yyyy"
         disablePast={true}
-        maxDate="2025-01-01"
+        maxDate="2030-01-01"
+        minDate="2019-01-01"
         ampm={false}
         TextFieldComponent={() => null}
       />
