@@ -5,24 +5,36 @@ import {
   fetchReminders,
 } from '../services/remindersLocalStorageClient';
 
-export function useLocalStorageForReminders() {
-  const key = 'reminders';
-  const [reminders, setReminders] = useState([]);
+export function useLocalStorageForReminderList() {
+  const key = 'reminderList';
+  const [reminderList, setReminderList] = useState({
+    id: '',
+    listTitle: '',
+    reminders: [],
+  });
+  const { reminders } = reminderList;
 
   useEffect(() => {
-    const reminders = fetchReminders(key);
-    if (reminders) {
-      setReminders(reminders);
+    const reminderList = fetchReminders(key);
+    if (reminderList) {
+      setReminderList(reminderList);
     }
   }, []);
 
   useEffect(() => {
-    saveReminders(key, reminders);
-  }, [reminders]);
+    saveReminders(key, reminderList);
+  }, [reminderList]);
+
+  function addReminderListTitle(title) {
+    setReminderList({ ...reminderList, id: uuid(), listTitle: title });
+  }
 
   function addReminder(reminder) {
     const newReminder = { reminder, id: uuid(), completed: false };
-    setReminders([...reminders, newReminder]);
+    setReminderList({
+      ...reminderList,
+      reminders: [...reminders, newReminder],
+    });
   }
 
   function toggleReminderState(id) {
@@ -31,32 +43,33 @@ export function useLocalStorageForReminders() {
         ? { ...reminder, completed: !reminder.completed }
         : reminder
     );
-    setReminders(updatedReminders);
+    setReminderList({ ...reminderList, reminders: updatedReminders });
   }
 
   function deleteReminder(id) {
     const filteredReminders = reminders.filter(
       (reminder) => id !== reminder.id
     );
-    setReminders(filteredReminders);
+    setReminderList({ ...reminderList, reminders: filteredReminders });
   }
 
   function editReminder(id, newName) {
     const editedReminders = reminders.map((reminder) =>
       id === reminder.id ? { ...reminder, reminder: newName } : reminder
     );
-    setReminders(editedReminders);
+    setReminderList({ ...reminderList, reminders: editedReminders });
   }
 
   function scheduleReminder(id, date) {
     const scheduledReminders = reminders.map((reminder) =>
       id === reminder.id ? { ...reminder, dueDate: date.getTime() } : reminder
     );
-    setReminders(scheduledReminders);
+    setReminderList({ ...reminderList, reminders: scheduledReminders });
   }
 
   return {
-    reminders,
+    reminderList,
+    addReminderListTitle,
     addReminder,
     toggleReminderState,
     deleteReminder,

@@ -93,6 +93,15 @@ export default function ReminderListItem({
               name="delete"
               onClick={onDelete}
             />
+            <IconTextButton
+              dropdown
+              type="button"
+              icon="add_location_alt"
+              isHidden={true}
+              title="Location"
+              name="location"
+              onClick={() => alert('Coming soon!')}
+            />
           </DropDownMenu>
         </ReminderListItemView>
       )}
