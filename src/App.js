@@ -1,16 +1,24 @@
 import React from 'react';
-import ModeSwitcher from './components/ModeSwitcher';
+import { Route, Switch } from 'react-router-dom';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import ReminderListView from './screens/ReminderListScreen';
+import Header from './components/Header';
+import ReminderListScreen from './screens/ReminderListScreen';
+import ReminderListCollectionScreen from './screens/ReminderListCollectionScreen';
+import Navigation from './components/Navigation';
 
 function App() {
   return (
     <div className="app">
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <h1>Hello Zebra!</h1>
-        <ModeSwitcher />
-        <ReminderListView />
+        <Header />
+        <main>
+          <Switch>
+            <Route exact path="/" component={ReminderListCollectionScreen} />
+            <Route path="/reminderlist" component={ReminderListScreen} />
+          </Switch>
+        </main>
+        <Navigation />
       </MuiPickersUtilsProvider>
     </div>
   );
