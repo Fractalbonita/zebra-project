@@ -4,6 +4,7 @@ import { useLocalStorageForReminderList } from '../hooks/useLocalStorageForRemin
 import ReminderList from '../components/ReminderList';
 import ReminderListFilter from '../components/ReminderListFilter';
 import ReminderListTitle from '../components/ReminderListTitle';
+import ReminderListForm from '../components/ReminderListForm';
 
 export default function ReminderListScreen() {
   const {
@@ -21,10 +22,8 @@ export default function ReminderListScreen() {
 
   return (
     <div>
-      <ReminderListTitle
-        addReminderListTitle={addReminderListTitle}
-        listTitle={listTitle}
-      />
+      <ReminderListForm addReminderListTitle={addReminderListTitle} />
+      <ReminderListTitle listTitle={listTitle} />
       <ReminderListFilter
         filter={filter}
         onFilter={(state) => {
