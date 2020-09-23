@@ -30,6 +30,7 @@ export default function ReminderListItemEdit({
 
   return (
     <Container>
+      <label htmlFor="id">Check reminder</label>
       <input
         id={id}
         type="checkbox"
@@ -42,6 +43,7 @@ export default function ReminderListItemEdit({
           onChange(newName);
         }}
       >
+        <label htmlFor="reminder">Change reminder name</label>
         <input
           id="reminder"
           type="text"
@@ -78,6 +80,17 @@ const Container = styled.div`
   grid-gap: 10px;
   grid-template-columns: 16px auto 40px;
   margin: 0.5rem 0;
+
+  label {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
 
   input {
     justify-self: center;
