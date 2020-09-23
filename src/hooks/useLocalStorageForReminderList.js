@@ -8,6 +8,7 @@ import {
 export function useLocalStorageForReminderList() {
   const key = 'reminderList';
   const [reminderList, setReminderList] = useState({
+    id: '',
     listTitle: '',
     reminders: [],
   });
@@ -25,7 +26,7 @@ export function useLocalStorageForReminderList() {
   }, [reminderList]);
 
   function addReminderListTitle(title) {
-    setReminderList({ ...reminderList, listTitle: title });
+    setReminderList({ ...reminderList, id: uuid(), listTitle: title });
   }
 
   function addReminder(reminder) {
