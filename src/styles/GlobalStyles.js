@@ -77,4 +77,13 @@ body {
   padding: 20px;
   transition: all .5s;
 }
+
+h1 {
+  font-size: 24px;
+  margin: 1rem 0;
+}
+
+h2 {
+  font-size: 20px;
+}
 `;

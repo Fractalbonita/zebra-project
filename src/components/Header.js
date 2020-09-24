@@ -13,6 +13,10 @@ export default function Header() {
 
 const Container = styled.div`
   align-items: center;
-  display: grid;
-  grid-template-columns: auto 145px;
+  background-color: var(--surface);
+  color: var(--text);
+  display: flex;
+  flex-direction: center;
+  justify-content: space-between;
+  align-items: center;
 `;
