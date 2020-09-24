@@ -82,6 +82,7 @@ const materialTheme = createMuiTheme({
 
 export default function ReminderListItemSchedule({ onClose, onSchedule }) {
   const [date, setDate] = useState(new Date());
+
   return (
     <ThemeProvider theme={materialTheme}>
       <DatePicker
