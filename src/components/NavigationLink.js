@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from './Icon';
+import { useNavToggle } from '../hooks/useNavToggle';
 
 NavigationLink.propTypes = {
   title: PropTypes.string,
@@ -11,20 +12,29 @@ NavigationLink.propTypes = {
 };
 
 export default function NavigationLink({ title, address, icon }) {
+  const [isActive, navToggle, showCaption] = useNavToggle();
+
   return (
     <li>
-      <Link exact to={address} activeClassName="active">
+      <Link
+        ref={navToggle}
+        exact
+        to={address}
+        activeClassName="active"
+        onClick={() => showCaption(true)}
+      >
         <Icon icon={icon} />
-        {title}
+        {isActive ? <span>{title}</span> : null}
       </Link>
     </li>
   );
 }
 
 const Link = styled(NavLink)`
-  color: var(--accent);
+  color: var(--text);
   display: flex;
   flex-direction: column;
+  font-size: 12px;
   height: 48px;
   justify-content: center;
   outline: none;
@@ -35,8 +45,8 @@ const Link = styled(NavLink)`
     color: var(--primary);
     font-weight: 900;
   }
-`;
 
-// margin: 0;
-// padding: 0 5px;
-// text-transform: uppercase;
+  &.hover {
+    color: var(--primary);
+  }
+`;
