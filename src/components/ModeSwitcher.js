@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useSavedMode } from '../hooks/useSavedMode';
 import Icon from './Icon';
 
-export default function () {
+export default function ModeSwitcher () {
   const [theme, switchColorTheme] = useSavedMode();
 
   return (
