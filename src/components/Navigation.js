@@ -23,7 +23,7 @@ const Nav = styled.nav`
   bottom: 0;
   display: grid;
   grid-template-columns: 1fr;
-  height: 60px;
+  height: 56px;
   left: 0;
   position: fixed;
   right: 0;
