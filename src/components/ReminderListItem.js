@@ -31,7 +31,7 @@ export default function ReminderListItem({
   dueDate,
 }) {
   const [isEditing, setEditing] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <li>
@@ -62,7 +62,7 @@ export default function ReminderListItem({
           {isOpen && (
             <ReminderListItemSchedule
               onSchedule={onSchedule}
-              onClose={() => setIsOpen(false)}
+              onClose={() => setOpen(false)}
             />
           )}
           <DropDownMenu>
@@ -73,7 +73,7 @@ export default function ReminderListItem({
               isHidden={true}
               title="Schedule"
               name="schedule"
-              onClick={() => setIsOpen(true)}
+              onClick={() => setOpen(true)}
             />
             <IconTextButton
               dropdown
