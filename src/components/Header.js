@@ -14,7 +14,6 @@ export default function Header() {
 const Container = styled.div`
   align-items: center;
   background-color: var(--surface);
-  color: var(--text);
   display: flex;
   flex-direction: center;
   justify-content: space-between;
