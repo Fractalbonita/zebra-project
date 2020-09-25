@@ -1,0 +1,53 @@
+[
+  {
+    "id": "123",
+    "title": "Remote work",
+    "categories": ["Work", "Home"],
+    "contributors": ["Me", "Husband", "Child"],
+    "reminders": [
+      {
+        "id": "0123",
+        "reminder": "Setup workspace",
+        "dueDate": 658668,
+        "completed": true,
+        "location": "Hamburg"
+      },
+      {
+        "id": "2345",
+        "reminder": "Buy whiteboard",
+        "dueDate": 75855886,
+        "completed": false,
+        "location": ""
+      }
+    ]
+  },
+  {
+    "id": "1234",
+    "title": "Interior",
+    "categories": ["Home"],
+    "contributors": ["Me", "Husband"],
+    "reminders": [
+      {
+        "id": "5678",
+        "reminder": "Choose new dining table",
+        "dueDate": 658668,
+        "completed": false,
+        "location": "Hamburg"
+      },
+      {
+        "id": "6789",
+        "reminder": "Buy new comfy chairs",
+        "dueDate": 75855886,
+        "completed": true,
+        "location": ""
+      },
+      {
+        "id": "6789",
+        "reminder": "Paint walls",
+        "dueDate": 75855886,
+        "completed": true,
+        "location": "Home"
+      }
+    ]
+  }
+]

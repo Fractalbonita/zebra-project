@@ -7,7 +7,7 @@ import ReminderListTitle from '../components/ReminderListTitle';
 import ReminderListForm from '../components/ReminderListForm';
 
 export default function ReminderListScreen() {
-  const {
+  const [
     reminderList,
     addReminderListTitle,
     addReminder,
@@ -15,7 +15,7 @@ export default function ReminderListScreen() {
     deleteReminder,
     editReminder,
     scheduleReminder,
-  } = useLocalStorageForReminderList();
+  ] = useLocalStorageForReminderList();
 
   const { reminders, listTitle } = reminderList;
   const [filter, setFilter] = useState('Active');

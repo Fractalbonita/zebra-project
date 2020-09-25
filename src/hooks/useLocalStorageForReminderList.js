@@ -67,7 +67,7 @@ export function useLocalStorageForReminderList() {
     setReminderList({ ...reminderList, reminders: scheduledReminders });
   }
 
-  return {
+  return [
     reminderList,
     addReminderListTitle,
     addReminder,
@@ -75,5 +75,5 @@ export function useLocalStorageForReminderList() {
     deleteReminder,
     editReminder,
     scheduleReminder,
-  };
+  ];
 }

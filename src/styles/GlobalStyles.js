@@ -76,5 +76,20 @@ body {
   margin: 0 auto;
   padding: 20px;
   transition: all .5s;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 120px;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  margin: .5rem 0;
+}
+
+h2 {
+  font-size: 20px;
 }
 `;

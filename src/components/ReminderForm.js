@@ -42,7 +42,8 @@ export default function ReminderForm({ addReminder }) {
 }
 
 const Form = styled.form`
-  bottom: 50px;
+  background-color: var(--surface);
+  bottom: 56px;
   position: fixed;
   width: calc(100vw - 40px);
 

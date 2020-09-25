@@ -28,6 +28,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
             event.preventDefault();
             addReminderListTitle(value);
             setValue('');
+            setEditing(false);
           }}
         >
           <label htmlFor="reminderList">What's the title of the list?</label>
