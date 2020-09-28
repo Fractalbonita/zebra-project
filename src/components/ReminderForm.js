@@ -10,14 +10,17 @@ ReminderForm.propTypes = {
 export default function ReminderForm({ addReminder }) {
   const [value, setValue] = useState('');
 
+  const submitReminder = (event) => {
+    event.preventDefault();
+    addReminder(value);
+    setValue('');
+  };
+  const updateValue = (event) => {
+    setValue(event.target.value);
+  };
+
   return (
-    <Form
-      onSubmit={(event) => {
-        event.preventDefault();
-        addReminder(value);
-        setValue('');
-      }}
-    >
+    <Form onSubmit={submitReminder}>
       <label htmlFor="reminder">Add reminder</label>
       <Container>
         <input
@@ -26,7 +29,7 @@ export default function ReminderForm({ addReminder }) {
           placeholder="e.g. Foo"
           value={value}
           min="1"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={updateValue}
         />
         <FormIconButton
           disabled={!value}

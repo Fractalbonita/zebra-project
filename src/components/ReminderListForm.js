@@ -12,6 +12,17 @@ export default function ReminderListForm({ addReminderListTitle }) {
   const [value, setValue] = useState('');
   const [isEditing, setEditing] = useState(false);
 
+  const submitReminderListTitle = (event) => {
+    event.preventDefault();
+    addReminderListTitle(value);
+    setValue('');
+    setEditing(false);
+  };
+
+  const updateValue = (event) => {
+    setValue(event.target.value);
+  };
+
   return (
     <>
       <IconTextButton
@@ -23,14 +34,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
         onClick={() => setEditing(true)}
       />
       {isEditing && (
-        <Form
-          onSubmit={(event) => {
-            event.preventDefault();
-            addReminderListTitle(value);
-            setValue('');
-            setEditing(false);
-          }}
-        >
+        <Form onSubmit={submitReminderListTitle}>
           <label htmlFor="reminderList">What's the title of the list?</label>
           <input
             id="reminderList"
@@ -38,7 +42,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
             placeholder="e.g. Remote work"
             value={value}
             min="1"
-            onChange={(event) => setValue(event.target.value)}
+            onChange={updateValue}
           />
           <FormIconButton
             type="submit"

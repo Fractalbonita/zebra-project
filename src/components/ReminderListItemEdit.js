@@ -28,6 +28,14 @@ export default function ReminderListItemEdit({
     editInputRef.current.focus();
   }, [editInputRef]);
 
+  const submitNewName = (event) => {
+    event.preventDefault();
+    onChange(newName);
+  };
+
+  const updateNewName = (event) => {
+    setNewName(event.target.value);
+  };
   return (
     <Container>
       <label htmlFor="id">Check reminder</label>
@@ -37,21 +45,14 @@ export default function ReminderListItemEdit({
         defaultChecked={completed}
         onChange={onCheck}
       />
-      <Form
-        onSubmit={(event) => {
-          event.preventDefault();
-          onChange(newName);
-        }}
-      >
+      <Form onSubmit={submitNewName}>
         <label htmlFor="reminder">Change reminder name</label>
         <input
           id="reminder"
           type="text"
           value={newName}
           min="1"
-          onChange={(event) => {
-            setNewName(event.target.value);
-          }}
+          onChange={updateNewName}
           ref={editInputRef}
         />
         <FormIconButton

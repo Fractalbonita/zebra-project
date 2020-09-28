@@ -33,6 +33,11 @@ export default function ReminderListItem({
   const [isEditing, setEditing] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
+  const handleNameChange = (newName) => {
+    setEditing(false);
+    onChange(newName);
+  };
+
   return (
     <li>
       {isEditing ? (
@@ -41,10 +46,7 @@ export default function ReminderListItem({
           completed={completed}
           onCheck={onCheck}
           onDelete={onDelete}
-          onChange={(newName) => {
-            setEditing(false);
-            onChange(newName);
-          }}
+          onChange={handleNameChange}
           previousName={previousName}
         />
       ) : (
