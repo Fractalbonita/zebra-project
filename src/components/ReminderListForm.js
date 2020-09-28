@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import FormIconButton from '../components/Buttons/FormIconButton';
 import IconTextButton from '../components/Buttons/IconTextButton';
 
@@ -11,12 +12,14 @@ ReminderListForm.propTypes = {
 export default function ReminderListForm({ addReminderListTitle }) {
   const [value, setValue] = useState('');
   const [isEditing, setEditing] = useState(false);
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const submitReminderListTitle = (event) => {
     event.preventDefault();
     addReminderListTitle(value);
     setValue('');
     setEditing(false);
+    setSubmitting(true);
   };
 
   const updateValue = (event) => {
@@ -53,6 +56,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
           />
         </Form>
       )}
+      {isSubmitting && <Redirect to="/reminderlist" />}
     </>
   );
 }
