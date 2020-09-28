@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '../Icon';
 import PropTypes from 'prop-types';
 
@@ -66,12 +66,12 @@ const Button = styled.button`
   &:focus {
     background-color: var(--primary);
     color: var(--surface);
-    ${({ isShown }) =>
-      isShown &&
-      `
-    background-color: var(--surface);
-    color: var(--text);
-  `}
+    ${(props) =>
+      props.isShown &&
+      css`
+        background-color: var(--surface);
+        color: var(--text);
+      `}
   }
 
   &:active {

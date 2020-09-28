@@ -51,7 +51,6 @@ const Button = styled.button`
   padding: 0 16px 0 12px;
   outline: none;
   text-align: left;
-  width: ${(props) => props.dropdownWidth || ''};
 
   &:disabled {
     color: var(--text);
