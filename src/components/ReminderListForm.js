@@ -13,7 +13,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
   const [isEditing, setEditing] = useState(false);
 
   return (
-    <div>
+    <>
       <IconTextButton
         type="button"
         icon="add"
@@ -49,7 +49,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
           />
         </Form>
       )}
-    </div>
+    </>
   );
 }
 

@@ -21,7 +21,7 @@ export default function ReminderListScreen() {
   const [filter, setFilter] = useState('Active');
 
   return (
-    <div>
+    <>
       <ReminderListForm addReminderListTitle={addReminderListTitle} />
       <ReminderListTitle listTitle={listTitle} />
       <ReminderListFilter
@@ -39,6 +39,6 @@ export default function ReminderListScreen() {
         scheduleReminder={scheduleReminder}
       />
       <ReminderForm addReminder={addReminder} />
-    </div>
+    </>
   );
 }
