@@ -10,7 +10,6 @@ ReminderForm.propTypes = {
 
 export default function ReminderForm({ listId }) {
   const [value, setValue] = useState('');
-
   const { addReminder } = useReminderList(listId);
 
   const submitReminder = (event) => {
@@ -68,10 +67,7 @@ const Container = styled.div`
   input {
     background-color: var(--surface);
     border-radius: 0;
-    border-bottom: 2px solid var(--text);
-    border-left: 1px solid var(--accent);
-    border-right: 1px solid var(--accent);
-    border-top: 1px solid var(--accent);
+    border: 1px solid var(--accent);
     color: var(--text);
     font-size: 16px;
     padding: 0 16px;
