@@ -15,7 +15,7 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/" component={ReminderListCollectionScreen} />
-            <Route path="/reminderlist" component={ReminderListScreen} />
+            <Route path="/lists/:listId" component={ReminderListScreen} />
           </Switch>
         </main>
         <Navigation />
