@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import FormIconButton from './Buttons/FormIconButton';
 import PropTypes from 'prop-types';
+import { useReminderList } from '../hooks/useReminderList';
 
 ReminderForm.propTypes = {
-  addReminder: PropTypes.func,
+  listId: PropTypes.string,
 };
 
-export default function ReminderForm({ addReminder }) {
+export default function ReminderForm({ listId }) {
   const [value, setValue] = useState('');
+
+  const { addReminder } = useReminderList(listId);
 
   const submitReminder = (event) => {
     event.preventDefault();
