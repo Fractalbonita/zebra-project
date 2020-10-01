@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import FormIconButton from '../components/Buttons/FormIconButton';
 import IconTextButton from '../components/Buttons/IconTextButton';
+import { useReminderListCreator } from '../hooks/useReminderListCreator';
 
-ReminderListForm.propTypes = {
-  addReminderListTitle: PropTypes.func,
-};
-
-export default function ReminderListForm({ addReminderListTitle }) {
+export default function ReminderListForm() {
   const [value, setValue] = useState('');
   const [isEditing, setEditing] = useState(false);
-  const [isSubmitting, setSubmitting] = useState(false);
+  const [listId, addReminderList] = useReminderListCreator(
+    (listTitle) => listTitle === value
+  );
 
-  const submitReminderListTitle = (event) => {
+  const submitReminderList = (event) => {
     event.preventDefault();
-    addReminderListTitle(value);
-    setValue('');
+    addReminderList(value);
     setEditing(false);
-    setSubmitting(true);
   };
 
   const updateValue = (event) => {
@@ -37,7 +33,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
         onClick={() => setEditing(true)}
       />
       {isEditing && (
-        <Form onSubmit={submitReminderListTitle}>
+        <Form onSubmit={submitReminderList}>
           <label htmlFor="reminderList">What's the title of the list?</label>
           <input
             id="reminderList"
@@ -48,6 +44,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
             onChange={updateValue}
           />
           <FormIconButton
+            disabled={!value}
             type="submit"
             title="Add new list"
             name="addNewList"
@@ -56,7 +53,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
           />
         </Form>
       )}
-      {isSubmitting && <Redirect to="/reminderlist" />}
+      {listId && <Redirect to={`/lists/${listId}`} />}
     </>
   );
 }
@@ -64,6 +61,7 @@ export default function ReminderListForm({ addReminderListTitle }) {
 const Form = styled.form`
   display: grid;
   grid-template-columns: auto 40px;
+  grid-template-rows: 40px;
 
   label {
     border: 0;
@@ -79,13 +77,12 @@ const Form = styled.form`
   input {
     background-color: var(--surface);
     border-radius: 0;
-    border-bottom: 1.5px solid var(--text);
+    border-bottom: 1px solid var(--accent);
     border-left: none;
     border-right: none;
     border-top: none;
     color: var(--text);
     font-size: 16px;
-    height: 40px;
     justify-self: center;
     margin: 0;
     padding: 0 8px;
