@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ReminderListItem from './ReminderListItem';
 import { FILTER_MAP } from './ReminderListFilter';
 import PropTypes from 'prop-types';
+import { useReminderList } from '../hooks/useReminderList';
 
 ReminderList.propTypes = {
   reminders: PropTypes.array,
@@ -14,22 +15,20 @@ ReminderList.propTypes = {
 };
 
 export default function ReminderList({
-  reminders,
   toggleReminderState,
   deleteReminder,
   editReminder,
   filter,
   scheduleReminder,
+  listId,
 }) {
+  const { reminderList } = useReminderList(listId);
+
   return (
     <>
-      <Counter>
-        <span>{reminders.length}</span>
-        <span>{reminders.length !== 1 ? ' reminders' : ' reminder'}</span>
-      </Counter>
       <List>
-        {reminders &&
-          reminders
+        {reminderList.reminders &&
+          reminderList.reminders
             .filter((reminder) => FILTER_MAP[filter](reminder))
             .map(({ id, reminder, completed, dueDate }) => (
               <ReminderListItem
@@ -49,15 +48,6 @@ export default function ReminderList({
     </>
   );
 }
-
-const Counter = styled.div`
-  margin: 0.5rem 0;
-
-  span:first-of-type {
-    font-size: 20px;
-    font-weight: bold;
-  }
-`;
 
 const List = styled.ul`
   list-style: none;
